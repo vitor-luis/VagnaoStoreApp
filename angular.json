@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "VagnaoStoreApp"
+    }
+  },
+  "defaultProject": "VagnaoStoreApp",
+  "cli": {
+    "analytics": false
+  }
 }
