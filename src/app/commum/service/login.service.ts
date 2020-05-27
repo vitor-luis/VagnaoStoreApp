@@ -11,7 +11,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  getProdutos(): Observable<HttpResponse<Produto>> {
-    return this.http.get<Produto>(`${VagnaoAPI}/produtos`, { observe: 'response' });
-  }
+  // getProdutos(): Observable<HttpResponse<Produto>> {
+  //   return this.http.get<Produto>(`${VagnaoAPI}/produtos`, { observe: 'response' });
+  // }
 }
