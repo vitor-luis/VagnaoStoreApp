@@ -94,7 +94,7 @@ span {
 	left: 3%;
     opacity: 1;
 }
-/*-- header --*/
+
 .header {
     text-align: center;
 	margin-top: 2em;
@@ -146,7 +146,7 @@ span {
 	margin-right:5px;
 	color: #FAB005;
 }
-/*--social--*/
+
 .social-top li{
 	display:inline-block;
 }
@@ -167,7 +167,6 @@ span {
 	width: 35px;
 }
 
-/* Circle */
 .icon span {
 	border-radius: 0;
 	display: block;
@@ -235,8 +234,7 @@ span {
 .icon:hover .fa-dribbble {
 	color: white;
 }
-/*--social--*/
-/*--nav--*/
+
 .navbar-nav {
     float: none;
     margin: 0;
@@ -289,10 +287,6 @@ nav.navbar.navbar-default {
 }
 
 
-
-
-
-/*--nav--*/
 .multi-column-dropdown li a {
     color: #999 !important;
 }
@@ -399,10 +393,7 @@ span.fa.fa-shopping-cart.my-cart-icon {
     top: 98%;
     left: -275%;
 }
-/*-- //header --*/
 
-
-/*--responsive--*/
 @media(max-width:600px){
 
 .cart {
@@ -430,7 +421,6 @@ span.fa.fa-shopping-cart.my-cart-icon {
 }
 }
 
-  /*Estilizando a nav da classe menu */
   .menu {
     width: 100%;
     height: 50px;
@@ -438,7 +428,6 @@ span.fa.fa-shopping-cart.my-cart-icon {
     font-family: Arial;
     }
    
-   /*Estilizando as listas */
     .menu ul {
     list-style: none;
     position: relative;
@@ -500,8 +489,6 @@ span.fa.fa-shopping-cart.my-cart-icon {
    
     }
 
-   
-   /*Criando o label */
     label[for="bt_menu"]{
     padding: 5px;
     background-color: #62BF43;
@@ -523,7 +510,6 @@ span.fa.fa-shopping-cart.my-cart-icon {
     
     }
    
-   /*Deixando o Menu Responsivo */
    
    @media(max-width: 800px) {
    label[for="bt_menu"] {

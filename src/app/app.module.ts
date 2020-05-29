@@ -7,17 +7,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './commum/login/login.component';
-import { VendasComponent } from './Site-Vendas/vendas/vendas.component';
-import { FooterComponent } from './Site-Vendas/footer/footer.component';
-import { HeaderComponent } from './Site-Vendas/header/header.component';
+import { FooterVendaComponent } from './Site-Vendas/footer-venda/footer-venda.component';
+import { HeaderVendaComponent } from './Site-Vendas/header-venda/header-venda.component';
+import { HomeVendaComponent } from './Site-Vendas/home-venda/home-venda.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HeaderComponent,
-    FooterComponent,
-    VendasComponent  
+    FooterVendaComponent,
+    HeaderVendaComponent,
+    HomeVendaComponent,
   ],
   imports: [
     BrowserModule,

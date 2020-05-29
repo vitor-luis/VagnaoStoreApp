@@ -23,7 +23,7 @@ ul{
 	margin:0;
 	padding:0;
 }
-/*-- //footer-top --*/
+
 .footer-bottom {
     text-align: center;
     margin: 1em 0 0;
@@ -93,7 +93,6 @@ ul{
     background:#E35E90;
 }
 
-/*-- //footer-top --*/
 .footer {
     background: #353535;
     padding: 2em 0;
@@ -144,12 +143,6 @@ ul{
 .copy-right p a:hover {
     color: #E21737;	
 }
-
-
-/*-- //footer --*/
-
-/*--responsive--*/
-
 
 
 @media(max-width:991px){
