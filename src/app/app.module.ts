@@ -15,6 +15,7 @@ import { HeaderAdministrativoComponent } from './Painel-Administrativo/header-ad
 import { FooterAdministrativoComponent } from './Painel-Administrativo/footer-administrativo/footer-administrativo.component';
 import { HomeAdministrativoComponent } from './Painel-Administrativo/home-administrativo/home-administrativo.component';
 import { ControlSidebarAdministrativoComponent } from './Painel-Administrativo/control-sidebar-administrativo/control-sidebar-administrativo.component';
+import { CategoriaAdministrativoComponent } from './Painel-Administrativo/categoria-administrativo/categoria-administrativo.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ControlSidebarAdministrativoComponent } from './Painel-Administrativo/c
     FooterAdministrativoComponent,
     HomeAdministrativoComponent,
     ControlSidebarAdministrativoComponent,
+    CategoriaAdministrativoComponent,
   ],
   imports: [
     BrowserModule,
