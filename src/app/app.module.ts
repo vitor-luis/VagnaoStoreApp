@@ -16,6 +16,12 @@ import { FooterAdministrativoComponent } from './Painel-Administrativo/footer-ad
 import { HomeAdministrativoComponent } from './Painel-Administrativo/home-administrativo/home-administrativo.component';
 import { ControlSidebarAdministrativoComponent } from './Painel-Administrativo/control-sidebar-administrativo/control-sidebar-administrativo.component';
 import { CategoriaAdministrativoComponent } from './Painel-Administrativo/categoria-administrativo/categoria-administrativo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegistrarLoginComponent } from './commum/login-registrar/registrar-login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListarUsuariosComponent } from './Painel-Administrativo/usuarios/listar-usuarios/listar-usuarios.component';
+ 
 
 @NgModule({
   declarations: [
@@ -30,12 +36,18 @@ import { CategoriaAdministrativoComponent } from './Painel-Administrativo/catego
     HomeAdministrativoComponent,
     ControlSidebarAdministrativoComponent,
     CategoriaAdministrativoComponent,
+    RegistrarLoginComponent,
+    ListarUsuariosComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],
