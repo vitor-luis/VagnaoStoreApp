@@ -21,6 +21,7 @@ import { RegistrarLoginComponent } from './commum/login-registrar/registrar-logi
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListarUsuariosComponent } from './Painel-Administrativo/usuarios/listar-usuarios/listar-usuarios.component';
+import { AdicionarUsuariosComponent } from './Painel-Administrativo/usuarios/adicionar-usuarios/adicionar-usuarios.component';
  
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ListarUsuariosComponent } from './Painel-Administrativo/usuarios/listar
     ControlSidebarAdministrativoComponent,
     CategoriaAdministrativoComponent,
     RegistrarLoginComponent,
-    ListarUsuariosComponent
+    ListarUsuariosComponent,
+    AdicionarUsuariosComponent
   ],
   imports: [
     BrowserModule,
