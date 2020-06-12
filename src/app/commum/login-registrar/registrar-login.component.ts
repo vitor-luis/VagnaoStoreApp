@@ -5,6 +5,7 @@ import { Login } from '../model/login.model';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ClientesService } from '../service/clientes.service';
 
 @Component({
   selector: 'app-registrar-login',
@@ -15,6 +16,7 @@ export class RegistrarLoginComponent implements OnInit {
 
   private httpReq: Subscription
   public loginForm: FormGroup
+  public clienteForm: FormGroup
 
   login: Login = null
   statusResponse: number
@@ -24,7 +26,8 @@ export class RegistrarLoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: LoginService,
     private router: Router,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    private serviceCliente: ClientesService
   ) {
 
   }
@@ -35,17 +38,36 @@ export class RegistrarLoginComponent implements OnInit {
       senha: this.formBuilder.control(''),
       isAdmin: this.formBuilder.control(0)
     })
+    this.clienteForm = this.formBuilder.group({
+      nome: this.formBuilder.control(''),
+      cpf: this.formBuilder.control(''),
+      dataNascimento: this.formBuilder.control(''),
+      idLogin: this.formBuilder.control(0)
+    })
   }
 
   onSubmit() {
+    console.log('opa')
     this.httpReq = this.service.postLogin(this.loginForm.value).subscribe(res =>{
       this.loginForm.reset()
+      this.clienteForm.value.idLogin = res.body['data']
+      this.postCliente()
+    }, err =>{
+      this.loginForm.reset()
+      this.router.navigate(['/'])
+      this.showToastrError()
+    })
+  }
+
+  postCliente(){
+    this.httpReq = this.serviceCliente.postCliente(this.clienteForm.value).subscribe(res => {
+      this.clienteForm.reset()
       this.router.navigate(['/'])
       this.showToastrSuccess()
     }, err =>{
       this.loginForm.reset()
       this.router.navigate(['/'])
-      this.showToastrError()
+      this.showToastrErrorCliente()
     })
   }
 
@@ -62,7 +84,16 @@ export class RegistrarLoginComponent implements OnInit {
       positionClass: 'toast-bottom-center'
     })
   }
+  showToastrErrorCliente(){
+    this._toastr.error('Houve um erro ao efetuar o cadastro do cliente. Tente novamente.', null, {
+      progressBar: true,
+      positionClass: 'toast-bottom-center'
+    })
+  }
 
   get email() { return this.loginForm.get('email') }
   get senha() { return this.loginForm.get('senha') }
+  get nome() { return this.loginForm.get('nome') }
+  get cpf() { return this.loginForm.get('cpf') }
+  get dataNascimento() { return this.loginForm.get('dataNascimento') }
 }

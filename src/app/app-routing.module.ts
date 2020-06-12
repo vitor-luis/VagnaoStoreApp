@@ -7,12 +7,14 @@ import { CategoriaAdministrativoComponent } from './Painel-Administrativo/catego
 import { RegistrarLoginComponent } from './commum/login-registrar/registrar-login.component';
 import { ListarUsuariosComponent } from './Painel-Administrativo/usuarios/listar-usuarios/listar-usuarios.component';
 
-
 export const ROUTES: Routes = [
-  { path: '', component: HomeVendaComponent},
+  { path: '',component: HomeVendaComponent, children: [
+
+  ]},
+  //rota login
   { path: 'login', children: [
     { path: '', component: LoginComponent},
-    { path: 'registrar', component: RegistrarLoginComponent}
+    { path: 'registrar', component: RegistrarLoginComponent},
   ]},
   { path: 'administrativo', children:[
     { path: '', component: HomeAdministrativoComponent},

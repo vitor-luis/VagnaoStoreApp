@@ -14,8 +14,8 @@ export class LoginService {
 
   params = new HttpParams()
 
-  getEmailForValidation(email: string): Observable<HttpResponse<Login>>{
-    return this.http.get<Login>(`${VagnaoAPI}/login/${email}`, {observe: 'response'})
+  postLogar(form: Login): Observable<HttpResponse<any>> {
+    return this.http.post<Login>(`${VagnaoAPI}/login/logar`, form, { observe: 'response' })
   }
 
   postLogin(form: Login): Observable<HttpResponse<any>> {

@@ -3,20 +3,48 @@
         <div id="login-row" class="row justify-content-center align-itens-center">
             <div id="login-column" class="cd-md-6">
                 <div id="login-box" class="cd-md-12">
-                    <form id="login-form" class="form" (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
-                        <h3 class="text-center">Login</h3>
-                        <div class="form-group">
-                            <label for="email" class="text-center">Email</label><br>
-                            <input type="text" name="usuario" id="email" class="form-control" formControlName="email">
+                    <div>
+                        <h3 class="text-center">Cliente</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <form id="login-form" class="form" [formGroup]="clienteForm" novalidate>
+                                <div class="form-group">
+                                    <label for="nome" class="text-center">Nome</label><br>
+                                    <input type="text" name="nome" id="nome" class="form-control"
+                                        formControlName="nome">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cpf" class="text-center">CPF</label><br>
+                                    <input type="text" name="usuario" id="cpf" class="form-control"
+                                        formControlName="cpf">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dataNascimento" class="text-center">Data Nascimento</label><br>
+                                    <input type="text" name="dataNascimento" id="dataNascimento" class="form-control"
+                                        formControlName="dataNascimento">
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="senha" class="text-center">Senha </label><br>
-                            <input type="password" name="senha" id="senha" class="form-control" formControlName="senha">
+                        <div class="col-sm">
+                            <form id="login-form" class="form" [formGroup]="loginForm"
+                                novalidate>
+                                <div class="form-group">
+                                    <label for="email" class="text-center">Email</label><br>
+                                    <input type="text" name="usuario" id="email" class="form-control"
+                                        formControlName="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="senha" class="text-center">Senha </label><br>
+                                    <input type="password" name="senha" id="senha" class="form-control"
+                                        formControlName="senha">
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-success btn-block" value="Concluir">
-                        </div>
-                    </form>
+                    </div>
+                    <div class="form-group botao">
+                       <button (click)="onSubmit()" class="btn btn-success">Concluir</button>
+                    </div>
                 </div>
             </div>
         </div>
