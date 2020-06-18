@@ -2,6 +2,7 @@
     <app-header-administrativo></app-header-administrativo>
     <app-sidebar-administrativo></app-sidebar-administrativo>
     <div class="content-wrapper marginTopBottomContentContainerAdmin">
+        <br>
         <div class="container-fluid marginTopBottomContentContainerAdmin">
             <div>
                 <div class="row">
@@ -10,25 +11,29 @@
                     </div>
                     <div class="col-sm-6 positionButtons">
                         <button type="button" class="btn btn-outline-success btn-sm botao"
-                            [routerLink]="['/']">Adicionar</button>
+                            [routerLink]="['/administrativo/usuarios/adicionar']">Adicionar</button>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>Nome</th>
                                 <th>Email</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let usuario of login">
+                            <tr class="pointer hoverRowTable" *ngFor="let usuario of login" [routerLink]="['/administrativo/usuarios/visualizar', usuario['email']]">
                                 <th scope="row">
-                                    <span>{{usuario.email}}</span>
+                                    <span>{{usuario.nome}}</span>
                                 </th>
                                 <th>
-                                    <button class="btn btn-outline-warning btn-sm">Editar</button>
-                                    <button class="btn btn-outline-danger btn-sm"> Excluir</button>
+                                    <span>{{usuario.email}}</span>
+                                </th>
+                                <th (click)="$event.stopPropagation()">
+                                    <button class="btn btn-outline-warning btn-sm">Editar</button>&nbsp;
+                                    <button class="btn btn-outline-danger btn-sm" (click)="canDelete(usuario['nome'], usuario['id'],usuario['idLogin'])" > Excluir</button>
                                 </th>
                             </tr>
                         </tbody>

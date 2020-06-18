@@ -1,5 +1,5 @@
 export interface Login {
-    _id: number,
+    id: number,
     email: string,
     senha: string,
     isAdmin: number

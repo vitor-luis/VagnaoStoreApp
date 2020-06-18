@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Login } from '../model/login.model';
-import { LoginService } from '../service/login.service';
-import { Router } from '@angular/router';
+import { ClientesService } from 'src/app/commum/service/clientes.service';
 import { ToastrService } from 'ngx-toastr';
-import { ClientesService } from '../service/clientes.service';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/commum/service/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Login } from 'src/app/commum/model/login.model';
+import { Subscription } from 'rxjs';
+import { ValidateBrService } from 'angular-validate-br';
 
 @Component({
-  selector: 'app-registrar-login',
-  templateUrl: './registrar-login.component.html',
-  styleUrls: ['./registrar-login.component.css']
+  selector: 'app-adicionar-usuarios',
+  templateUrl: './adicionar-usuarios.component.html',
+  styleUrls: ['./adicionar-usuarios.component.css']
 })
-export class RegistrarLoginComponent implements OnInit {
+export class AdicionarUsuariosComponent implements OnInit {
 
+  
   private httpReq: Subscription
   public loginForm: FormGroup
   public clienteForm: FormGroup
@@ -21,11 +23,13 @@ export class RegistrarLoginComponent implements OnInit {
   login: Login = null
   statusResponse: number
   messageApi: string
+  mask:string;
 
   constructor(
     private formBuilder: FormBuilder,
     private service: LoginService,
     private router: Router,
+    private _validateBrService: ValidateBrService,
     private _toastr: ToastrService,
     private serviceCliente: ClientesService
   ) {
@@ -34,27 +38,26 @@ export class RegistrarLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: this.formBuilder.control(''),
-      senha: this.formBuilder.control(''),
-      isAdmin: this.formBuilder.control(0)
+      email:  ['', [Validators.required, Validators.email]],
+      senha:  ['', [Validators.required]],
+      isAdmin:  [1, [Validators.required]]
     })
     this.clienteForm = this.formBuilder.group({
-      nome: this.formBuilder.control(''),
-      cpf: this.formBuilder.control(''),
-      dataNascimento: this.formBuilder.control(''),
-      idLogin: this.formBuilder.control(0)
+      nome: ['', [Validators.required]],
+      cpf: ['', [Validators.required, this._validateBrService.cpf]],
+      dataNascimento:  ['', [Validators.required]],
+      idLogin:  [0, [Validators.required]]
     })
   }
 
   onSubmit() {
-    console.log('opa')
     this.httpReq = this.service.postLogin(this.loginForm.value).subscribe(res =>{
       this.loginForm.reset()
       this.clienteForm.value.idLogin = res.body['data']
       this.postCliente()
     }, err =>{
       this.loginForm.reset()
-      this.router.navigate(['/'])
+      this.router.navigate(['/administrativo/usuarios'])
       this.showToastrError()
     })
   }
@@ -62,11 +65,11 @@ export class RegistrarLoginComponent implements OnInit {
   postCliente(){
     this.httpReq = this.serviceCliente.postCliente(this.clienteForm.value).subscribe(res => {
       this.clienteForm.reset()
-      this.router.navigate(['/'])
+      this.router.navigate(['/administrativo/usuarios'])
       this.showToastrSuccess()
     }, err =>{
       this.loginForm.reset()
-      this.router.navigate(['/'])
+      this.router.navigate(['/administrativo/usuarios'])
       this.showToastrErrorCliente()
     })
   }

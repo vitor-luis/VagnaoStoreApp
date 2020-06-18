@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { LoginService } from '../service/login.service';
 import { Login } from '../model/login.model';
 import { Router } from '@angular/router';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -36,33 +37,30 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.httpReq = this.service.getEmailForValidation(this.loginForm.value.email).subscribe(response => {
-      this.statusResponse = response.status
-      this.messageApi = response.body['message']
-      this.login = response.body['data'][0]
-      if (response.body['data'][0] != undefined) {
-        this.autenticacao()
-      } else {
-        this.statusResponse = 304;
-        this.messageApi = 'Email inválido'
+    this.httpReq = this.service.postLogar(this.loginForm.value).subscribe(res => {
+      if (res.status == 200) {
+        let response = this.decodificarToken(res.body['token'])
+        if (response.isAdmin == 1) {
+          this.router.navigate(['administrativo'])
+        } else {
+          this.router.navigate(['/'])
+        }
       }
-    }, err => {
-      this.messageApi = err.error['message']
+    }, err =>{
+      this.statusResponse = err.status
+      this.messageApi = 'Falha na autenticação!'
     })
   }
 
-  autenticacao() {
-    if (this.login.senha == this.loginForm.value.senha) {
-      if(this.login.isAdmin == 1){
-        this.router.navigate(['/administrativo'])
-      }else{
-        this.router.navigate(['/'])
-      }
-    } else {
-      this.statusResponse = 304;
-      this.messageApi = 'Senha inválida'
+  decodificarToken(token): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
     }
   }
+
+
   get email() { return this.loginForm.get('email') }
   get senha() { return this.loginForm.get('senha') }
 }
