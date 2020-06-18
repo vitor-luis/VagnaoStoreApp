@@ -1,7 +1,10 @@
 .marginTopBottomContentContainerAdmin{
+    background-color:white;
+}
+
+.marginContentContainerAdmin{
     margin-left: 5%;
     margin-right: 5%;
-    background-color: white;
 }
 
 .positionTitle {
@@ -11,12 +14,6 @@
 .positionButtons {
     text-align: end;
 }
-
-.pointer {
-    cursor: pointer;
-}
-
-.hoverRowTable:hover {
-    background-color: rgb(245, 245, 245);
-    color: rgb(43, 50, 82)
+.content-wrapper{
+    background-color: white !important;
 }

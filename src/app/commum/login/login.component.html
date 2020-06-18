@@ -12,9 +12,11 @@
                         <div class="form-group">
                             <label for="senha" class="text-center">Senha </label><br>
                             <input type="password" name="senha" id="senha" class="form-control" formControlName="senha">
-                        </div>
-                        <div *ngIf="statusResponse == 304">
-                            <label class="text-center">{{messageApi}}</label><br>
+                            <small *ngIf="statusResponse == 401" class="text-danger alinhar">
+                                <div>
+                                    {{messageApi}}
+                                </div>
+                            </small>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" value="Entrar">
