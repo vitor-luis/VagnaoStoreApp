@@ -3,9 +3,10 @@ import { ClientesService } from 'src/app/commum/service/clientes.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/commum/service/login.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Login } from 'src/app/commum/model/login.model';
 import { Subscription } from 'rxjs';
+import { ValidateBrService } from 'angular-validate-br';
 
 @Component({
   selector: 'app-adicionar-usuarios',
@@ -22,11 +23,13 @@ export class AdicionarUsuariosComponent implements OnInit {
   login: Login = null
   statusResponse: number
   messageApi: string
+  mask:string;
 
   constructor(
     private formBuilder: FormBuilder,
     private service: LoginService,
     private router: Router,
+    private _validateBrService: ValidateBrService,
     private _toastr: ToastrService,
     private serviceCliente: ClientesService
   ) {
@@ -35,15 +38,15 @@ export class AdicionarUsuariosComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: this.formBuilder.control(''),
-      senha: this.formBuilder.control(''),
-      isAdmin: this.formBuilder.control(1)
+      email:  ['', [Validators.required, Validators.email]],
+      senha:  ['', [Validators.required]],
+      isAdmin:  [1, [Validators.required]]
     })
     this.clienteForm = this.formBuilder.group({
-      nome: this.formBuilder.control(''),
-      cpf: this.formBuilder.control(''),
-      dataNascimento: this.formBuilder.control(''),
-      idLogin: this.formBuilder.control(0)
+      nome: ['', [Validators.required]],
+      cpf: ['', [Validators.required, this._validateBrService.cpf]],
+      dataNascimento:  ['', [Validators.required]],
+      idLogin:  [0, [Validators.required]]
     })
   }
 

@@ -24,16 +24,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let usuario of login">
+                            <tr class="pointer hoverRowTable" *ngFor="let usuario of login" [routerLink]="['/administrativo/usuarios/visualizar', usuario['email']]">
                                 <th scope="row">
                                     <span>{{usuario.nome}}</span>
                                 </th>
-                                <th scope="row">
+                                <th>
                                     <span>{{usuario.email}}</span>
                                 </th>
-                                <th>
-                                    <button class="btn btn-outline-warning btn-sm">Editar</button>
-                                    <button class="btn btn-outline-danger btn-sm"> Excluir</button>
+                                <th (click)="$event.stopPropagation()">
+                                    <button class="btn btn-outline-warning btn-sm">Editar</button>&nbsp;
+                                    <button class="btn btn-outline-danger btn-sm" (click)="canDelete(usuario['nome'], usuario['id'],usuario['idLogin'])" > Excluir</button>
                                 </th>
                             </tr>
                         </tbody>

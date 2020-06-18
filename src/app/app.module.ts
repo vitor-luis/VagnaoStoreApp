@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule, ROUTES } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,8 +21,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListarUsuariosComponent } from './Painel-Administrativo/usuarios/listar-usuarios/listar-usuarios.component';
 import { AdicionarUsuariosComponent } from './Painel-Administrativo/usuarios/adicionar-usuarios/adicionar-usuarios.component';
- 
+import { VisualizarUsuarioComponent } from './Painel-Administrativo/usuarios/visualizar-usuario/visualizar-usuario.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalDialogComponent } from './commum/modals/modal-dialog/modal-dialog.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,9 @@ import { AdicionarUsuariosComponent } from './Painel-Administrativo/usuarios/adi
     CategoriaAdministrativoComponent,
     RegistrarLoginComponent,
     ListarUsuariosComponent,
-    AdicionarUsuariosComponent
+    AdicionarUsuariosComponent,
+    VisualizarUsuarioComponent,
+    ModalDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,9 @@ import { AdicionarUsuariosComponent } from './Painel-Administrativo/usuarios/adi
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ModalModule.forRoot(),
     ToastrModule.forRoot(),
+    NgxMaskModule.forRoot(options),
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],

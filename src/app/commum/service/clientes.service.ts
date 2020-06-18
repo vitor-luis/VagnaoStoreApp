@@ -16,4 +16,8 @@ export class ClientesService {
   postCliente(form: Cliente) : Observable<HttpResponse<any>>{
     return this.http.post<Cliente>(`${VagnaoAPI}/clientes/`, form, { observe: 'response' })
   }
+
+  getCliente(email: string): Observable<HttpResponse<any>>{
+    return this.http.get<any>(`${VagnaoAPI}/login/${email}`, { observe: 'response' })
+  }
 }

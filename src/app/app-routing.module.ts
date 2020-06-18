@@ -7,6 +7,7 @@ import { CategoriaAdministrativoComponent } from './Painel-Administrativo/catego
 import { RegistrarLoginComponent } from './commum/login-registrar/registrar-login.component';
 import { ListarUsuariosComponent } from './Painel-Administrativo/usuarios/listar-usuarios/listar-usuarios.component';
 import { AdicionarUsuariosComponent } from './Painel-Administrativo/usuarios/adicionar-usuarios/adicionar-usuarios.component';
+import { VisualizarUsuarioComponent } from './Painel-Administrativo/usuarios/visualizar-usuario/visualizar-usuario.component';
 
 export const ROUTES: Routes = [
   { path: '',component: HomeVendaComponent, children: [
@@ -22,7 +23,8 @@ export const ROUTES: Routes = [
     { path: 'categoria', component: CategoriaAdministrativoComponent},
     { path: 'usuarios', children: [
       { path: '', component: ListarUsuariosComponent},
-      { path: 'adicionar', component: AdicionarUsuariosComponent}
+      { path: 'adicionar', component: AdicionarUsuariosComponent},
+      { path: 'visualizar/:email', component: VisualizarUsuarioComponent}
     ]}
   ]}
 ];

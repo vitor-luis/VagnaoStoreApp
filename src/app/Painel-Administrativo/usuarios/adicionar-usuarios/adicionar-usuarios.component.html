@@ -18,8 +18,17 @@
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label for="cpf" class="text-center">CPF</label><br>
-                                        <input type="text" name="usuario" id="cpf" class="form-control"
-                                            formControlName="cpf">
+                                        <input type="text" ValCpf name="cpf" class="form-control" placeholder="CPF"
+                                            formControlName="cpf" mask="000.000.000-00">
+                                        <!-- <small *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)"
+                                            class="text-danger">
+                                            <div *ngIf="cpf.errors.required">
+                                                O CPF é obrigatório.
+                                            </div>
+                                            <div *ngIf="cpf.errors.cpfvalidator">
+                                                O CPF é inválido.
+                                            </div>
+                                        </small> -->
                                     </div>
                                     <div class="form-group col-sm-3">
                                         <label for="dataNascimento" class="text-center">Data
@@ -35,8 +44,8 @@
                                 <div class="row">
                                     <div class="form-group col-sm-6">
                                         <label for="email" class="text-center">Email</label><br>
-                                        <input type="text" name="usuario" id="email" class="form-control"
-                                            formControlName="email">
+                                        <input type="email" name="usuario" id="email" class="form-control"
+                                            formControlName="email" maxlength="100">
                                     </div>
                                     <div class="form-group col-sm-6">
                                         <label for="senha" class="text-center">Senha </label><br>
