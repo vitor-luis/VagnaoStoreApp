@@ -25,6 +25,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalDialogComponent } from './commum/modals/modal-dialog/modal-dialog.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
+import { ListarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/listarProdutos/listar-produtos.component';
+import { ProdutosComponent } from './Painel-Administrativo/produtos-administrativo/produtoss/produtos.component';
+import { EditarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/editar-produtos/editar-produtos.component';
+
+
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 @NgModule({
@@ -44,7 +49,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     AdicionarUsuariosComponent,
     VisualizarUsuarioComponent,
     ModalDialogComponent,
-    ListarCategoriasComponent
+    ListarCategoriasComponent,
+    ListarProdutosComponent,
+    ProdutosComponent,
+    EditarProdutosComponent
   ],
   imports: [
     BrowserModule,
