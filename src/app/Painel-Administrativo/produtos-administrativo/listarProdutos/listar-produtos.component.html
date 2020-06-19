@@ -1,0 +1,70 @@
+<div class="wrapper">
+    <app-header-administrativo></app-header-administrativo>
+    <app-sidebar-administrativo></app-sidebar-administrativo>
+    <div class="content-wrapper marginTopBottomContentContainerAdmin">
+        <div class="container-fluid marginTopBottomContentContainerAdmin">
+            <div>
+                <div class="row">
+                    <div class="col-sm-6 positionTitle">
+                        <h5>Produtos</h5>
+                    </div>
+                    <div class="col-sm-6 positionButtons">
+                        <button type="button" class="btn btn-outline-success btn-sm botao"
+                            [routerLink]="['/administrativo/produtos/adicionar']">Adicionar</button>
+
+                            
+
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                               
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Estoque</th>
+                                <th>Preço</th>
+                                <th>URLImagem</th>
+                                <th>idCategoria</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let produto of produto">
+                                
+
+                                <th scope="row">
+                                    <span>{{produto.nome}}</span>
+                                </th>
+                                <th scope="row">
+                                    <span>{{produto.descricao}}</span>
+                                </th>
+                                    <th scope="row">    
+                                    <span>{{produto.quantidadeEstoque}}</span>
+                                </th>
+                                    <th scope="row">
+                                    <span>{{produto.preco}}</span>
+                                </th>
+                                <th scope="row">
+                                    <span>{{produto.urlImagem}}</span>
+                                </th>
+                                <th scope="row">
+                                    <span>{{produto.idCategoria}}</span>
+                                </th>
+                               
+                                <th> 
+                                    <button class="btn btn-outline-warning btn-sm" [routerLink]="['/administrativo/produtos/'+ produto.id]">Editar</button>
+                                    <button class="btn btn-outline-danger btn-sm" (click)="deleteProdutos(produto)" > Excluir</button>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-control-sidebar-administrativo></app-control-sidebar-administrativo>
+    <app-footer-administrativo></app-footer-administrativo>
+</div>
