@@ -14,7 +14,6 @@ import { HeaderAdministrativoComponent } from './Painel-Administrativo/header-ad
 import { FooterAdministrativoComponent } from './Painel-Administrativo/footer-administrativo/footer-administrativo.component';
 import { HomeAdministrativoComponent } from './Painel-Administrativo/home-administrativo/home-administrativo.component';
 import { ControlSidebarAdministrativoComponent } from './Painel-Administrativo/control-sidebar-administrativo/control-sidebar-administrativo.component';
-import { CategoriaAdministrativoComponent } from './Painel-Administrativo/categoria-administrativo/categoria-administrativo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrarLoginComponent } from './commum/login-registrar/registrar-login.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -25,6 +24,7 @@ import { VisualizarUsuarioComponent } from './Painel-Administrativo/usuarios/vis
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalDialogComponent } from './commum/modals/modal-dialog/modal-dialog.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 @NgModule({
@@ -39,12 +39,12 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     FooterAdministrativoComponent,
     HomeAdministrativoComponent,
     ControlSidebarAdministrativoComponent,
-    CategoriaAdministrativoComponent,
     RegistrarLoginComponent,
     ListarUsuariosComponent,
     AdicionarUsuariosComponent,
     VisualizarUsuarioComponent,
-    ModalDialogComponent
+    ModalDialogComponent,
+    ListarCategoriasComponent
   ],
   imports: [
     BrowserModule,
