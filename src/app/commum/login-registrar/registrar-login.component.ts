@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Login } from '../model/login.model';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClientesService } from '../service/clientes.service';
+import { ValidateBrService } from 'angular-validate-br';
 
 @Component({
   selector: 'app-registrar-login',
@@ -27,6 +28,7 @@ export class RegistrarLoginComponent implements OnInit {
     private service: LoginService,
     private router: Router,
     private _toastr: ToastrService,
+    private _validateBrService: ValidateBrService,
     private serviceCliente: ClientesService
   ) {
 
@@ -34,20 +36,19 @@ export class RegistrarLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: this.formBuilder.control(''),
-      senha: this.formBuilder.control(''),
-      isAdmin: this.formBuilder.control(0)
+      email:  ['', [Validators.required, Validators.email]],
+      senha:  ['', [Validators.required]],
+      isAdmin:  [1, [Validators.required]]
     })
     this.clienteForm = this.formBuilder.group({
-      nome: this.formBuilder.control(''),
-      cpf: this.formBuilder.control(''),
-      dataNascimento: this.formBuilder.control(''),
-      idLogin: this.formBuilder.control(0)
+      nome: ['', [Validators.required]],
+      cpf: ['', [Validators.required, this._validateBrService.cpf]],
+      dataNascimento:  ['', [Validators.required]],
+      idLogin:  [0, [Validators.required]]
     })
   }
 
   onSubmit() {
-    console.log('opa')
     this.httpReq = this.service.postLogin(this.loginForm.value).subscribe(res =>{
       this.loginForm.reset()
       this.clienteForm.value.idLogin = res.body['data']

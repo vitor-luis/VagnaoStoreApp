@@ -12,12 +12,12 @@
                                 <div class="form-group">
                                     <label for="nome" class="text-center">Nome</label><br>
                                     <input type="text" name="nome" id="nome" class="form-control"
-                                        formControlName="nome">
+                                        formControlName="nome" placeholder="Nome">
                                 </div>
                                 <div class="form-group">
                                     <label for="cpf" class="text-center">CPF</label><br>
-                                    <input type="text" name="usuario" id="cpf" class="form-control"
-                                        formControlName="cpf">
+                                    <input type="text" ValCpf name="cpf" class="form-control" placeholder="CPF"
+                                            formControlName="cpf" mask="000.000.000-00">
                                 </div>
                                 <div class="form-group">
                                     <label for="dataNascimento" class="text-center">Data Nascimento</label><br>
@@ -31,13 +31,13 @@
                                 novalidate>
                                 <div class="form-group">
                                     <label for="email" class="text-center">Email</label><br>
-                                    <input type="text" name="usuario" id="email" class="form-control"
-                                        formControlName="email">
+                                    <input type="email" name="usuario" id="email" class="form-control"
+                                            formControlName="email" maxlength="100" placeholder="Email">
                                 </div>
                                 <div class="form-group">
                                     <label for="senha" class="text-center">Senha </label><br>
                                     <input type="password" name="senha" id="senha" class="form-control"
-                                        formControlName="senha">
+                                        formControlName="senha" placeholder="Senha">
                                 </div>
                             </form>
                         </div>
