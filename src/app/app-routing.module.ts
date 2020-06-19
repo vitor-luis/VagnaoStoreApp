@@ -7,9 +7,6 @@ import { RegistrarLoginComponent } from './commum/login-registrar/registrar-logi
 import { ListarUsuariosComponent } from './Painel-Administrativo/usuarios/listar-usuarios/listar-usuarios.component';
 import { AdicionarUsuariosComponent } from './Painel-Administrativo/usuarios/adicionar-usuarios/adicionar-usuarios.component';
 import { VisualizarUsuarioComponent } from './Painel-Administrativo/usuarios/visualizar-usuario/visualizar-usuario.component';
-import { ListarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/listarProdutos/listar-produtos.component';
-import { ProdutosComponent } from './Painel-Administrativo/produtos-administrativo/produtoss/produtos.component';
-import { EditarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/editar-produtos/editar-produtos.component';
 
 export const ROUTES: Routes = [
   { path: '',component: HomeVendaComponent, children: [
@@ -26,10 +23,7 @@ export const ROUTES: Routes = [
       { path: '', component: ListarUsuariosComponent},
       { path: 'adicionar', component: AdicionarUsuariosComponent},
       { path: 'visualizar/:email', component: VisualizarUsuarioComponent}
-    ]},
-    { path: 'produtos', component: ListarProdutosComponent},
-    { path: 'produtos/adicionar', component: ProdutosComponent},
-    { path: 'produtos/:id', component: EditarProdutosComponent}
+    ]}
   ]}
 ];
 
