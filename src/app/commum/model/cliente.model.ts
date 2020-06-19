@@ -1,7 +1,7 @@
 import { Login } from './login.model';
 
 export interface Cliente {
-    _id: number,
+    id: number,
     nome: string,
     cpf: string,
     dataNascimento: Date,

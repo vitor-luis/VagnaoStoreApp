@@ -9,7 +9,7 @@
                     <h5>Visualizar Usuário</h5>
                 </div>
                 <div class="col-sm-4 positionButtons">
-                    <button type="button" class="btn btn-outline-warning btn-sm">Editar</button>&nbsp;
+                    <button type="button" class="btn btn-outline-warning btn-sm" [routerLink]="['/administrativo/usuarios/editar', usuario['email']]">Editar</button>&nbsp;
                     <button type="button" class="btn btn-outline-danger btn-sm" (click)="canDelete(usuario['nome'], usuario['id'],usuario['idLogin'])">Excluir</button>
                 </div>
             </div>

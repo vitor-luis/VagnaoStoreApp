@@ -1,0 +1,60 @@
+<div class="wrapper">
+    <app-header-administrativo></app-header-administrativo>
+    <app-sidebar-administrativo></app-sidebar-administrativo>
+    <div class="content-wrapper marginTopBottomContentContainerAdmin">
+        <br>
+        <h5 class="row marginContentContainerAdmin">Editar Usuário</h5>
+        <div class="row marginContentContainerAdmin">
+            <div id="login-column" class="cd-md-6">
+                <div id="login-box" class="cd-md-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form id="login-form" class="form" [formGroup]="clienteForm" novalidate>
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <label for="nome" class="text-center">Nome</label><br>
+                                        <input type="text" name="nome" id="nome" class="form-control"
+                                            formControlName="nome">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label for="cpf" class="text-center">CPF</label><br>
+                                        <input type="text" ValCpf name="cpf" class="form-control" placeholder="CPF"
+                                            formControlName="cpf" mask="000.000.000-00">
+                                    </div>
+                                    <div class="form-group col-sm-3">
+
+                                        <label for="dataNascimento" class="text-center">Data
+                                            Nascimento</label><br>
+                                        <input type="date" name="dataNascimento" id="dataNascimento"
+                                            class="form-control" formControlName="dataNascimento">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-8">
+                            <form id="login-form" class="form" [formGroup]="loginForm" novalidate>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label for="email" class="text-center">Email</label><br>
+                                        <input type="email" name="usuario" id="email" class="form-control"
+                                            formControlName="email" maxlength="100">
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label for="senha" class="text-center">Senha </label><br>
+                                        <input type="password" name="senha" id="senha" class="form-control"
+                                            formControlName="senha">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group positionButtons">
+                        <button (click)="onSubmit()" class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-control-sidebar-administrativo></app-control-sidebar-administrativo>
+    <app-footer-administrativo></app-footer-administrativo>
+</div>

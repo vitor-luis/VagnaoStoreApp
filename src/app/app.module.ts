@@ -24,6 +24,7 @@ import { VisualizarUsuarioComponent } from './Painel-Administrativo/usuarios/vis
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalDialogComponent } from './commum/modals/modal-dialog/modal-dialog.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { EditarUsuarioComponent } from './Painel-Administrativo/usuarios/editar-usuario/editar-usuario.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 @NgModule({
@@ -42,7 +43,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ListarUsuariosComponent,
     AdicionarUsuariosComponent,
     VisualizarUsuarioComponent,
-    ModalDialogComponent
+    ModalDialogComponent,
+    EditarUsuarioComponent
   ],
   imports: [
     BrowserModule,
