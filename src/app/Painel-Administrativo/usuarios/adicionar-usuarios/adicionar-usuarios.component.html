@@ -20,20 +20,12 @@
                                         <label for="cpf" class="text-center">CPF</label><br>
                                         <input type="text" ValCpf name="cpf" class="form-control" placeholder="CPF"
                                             formControlName="cpf" mask="000.000.000-00">
-                                        <!-- <small *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)"
-                                            class="text-danger">
-                                            <div *ngIf="cpf.errors.required">
-                                                O CPF é obrigatório.
-                                            </div>
-                                            <div *ngIf="cpf.errors.cpfvalidator">
-                                                O CPF é inválido.
-                                            </div>
-                                        </small> -->
                                     </div>
                                     <div class="form-group col-sm-3">
+
                                         <label for="dataNascimento" class="text-center">Data
                                             Nascimento</label><br>
-                                        <input type="text" name="dataNascimento" id="dataNascimento"
+                                        <input type="date" name="dataNascimento" id="dataNascimento"
                                             class="form-control" formControlName="dataNascimento">
                                     </div>
                                 </div>
