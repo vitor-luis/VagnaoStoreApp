@@ -1,0 +1,50 @@
+<div class="wrapper">
+    <app-header-administrativo></app-header-administrativo>
+    <app-sidebar-administrativo></app-sidebar-administrativo>
+    <div class="content-wrapper marginTopBottomContentContainerAdmin">
+        <div class="container-fluid marginTopBottomContentContainerAdmin">
+            <div>
+                <div class="row">
+                    <div class="col-sm-6 positionTitle">
+                        <h3>Vendas</h3>
+                    </div>
+                    <div class="col-sm-6 positionButtons">
+                            
+
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Valor Total</th>
+                                <th>Data da Venda</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let venda of venda">
+                                <th scope="row">
+                                    <span>{{venda.id}}</span>
+                                </th>
+
+                                <th scope="row">
+                                    <span>{{venda.total | currency:"R$"}}</span>
+                                </th>
+                                <th scope="row">
+                                    <span>{{venda.data | date: 'dd/MM/yyyy'}}</span>
+                                </th>
+                                 
+                                <th> 
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-control-sidebar-administrativo></app-control-sidebar-administrativo>
+    <app-footer-administrativo></app-footer-administrativo>
+</div>

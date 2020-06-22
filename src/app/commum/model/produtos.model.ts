@@ -1,5 +1,6 @@
 export interface Produto {
-    _id: number,
+    data: any,
+    id: number,
     nome: string,
     descricao: string,
     quantidadeEstoque: number,

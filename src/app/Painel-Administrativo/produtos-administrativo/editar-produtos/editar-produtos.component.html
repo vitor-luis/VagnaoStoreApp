@@ -1,0 +1,72 @@
+<div class="wrapper">
+    <app-header-administrativo></app-header-administrativo>
+    <app-sidebar-administrativo></app-sidebar-administrativo>
+    <div class="content-wrapper marginTopBottomContentContainerAdmin">
+        <div class="container-fluid marginTopBottomContentContainerAdmin">
+            <div>
+            
+
+
+                  <div id="login">
+                      
+                    <div class="container">
+                      
+                        <div id="login-row" class="row justify-content-center align-itens-center">
+                      
+                            <div id="login-column" class="cd-md-6">
+                      
+                                <div id="login-box" class="cd-md-12">
+                                    
+                                    <form id="login-form" class="form" [formGroup]="produtoForm" novalidate>
+                                        <h3 class="text-center" style="display: inline-block;">Alterar Produto</h3> 
+                                        <div class="col-sm-6 positionButtons" style="width: 13%;float:right" >
+                                            <button type="button" class="btn btn-outline-success btn-sm botao"
+                                                [routerLink]="['/administrativo/produtos']">Listar</button>      
+                    
+                                        </div>
+                                        <div  class="form-group"  >
+                                            
+                                            <label for="nome" class="text-center">Nome: </label><br>
+                                            <input type="text" name="nome" id="email" class="form-control" formControlName="nome">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="descricao" class="text-center">Descrição: </label><br>
+                                            <input type="text" name="descricao" id="email" class="form-control" formControlName="descricao">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="preco" class="text-center">Preço: </label><br>
+                                            <input type="text" name="preco" id="email" class="form-control" formControlName="preco">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="quantidadeEstoque" class="text-center">Estoque: </label><br>
+                                            <input type="text" name="quantidadeEstoque" id="email" class="form-control" formControlName="quantidadeEstoque">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="urlImagem" class="text-center">URL: </label><br>
+                                            <input type="text" name="urlImagem" id="email" class="form-control" formControlName="urlImagem">
+                                        </div>
+
+                                      <div class="form-group positionButtons">
+                                        <button (click)="onSubmit()" class="btn btn-success" [disabled]="!produtoForm.valid">Salvar</button>
+                                        
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <app-control-sidebar-administrativo></app-control-sidebar-administrativo>
+    <app-footer-administrativo></app-footer-administrativo>
+</div>

@@ -18,6 +18,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a [routerLink]="['/administrativo/usuarios']"class="nav-link">
+            <i class="nav-icon fas fa-list-alt"></i>
+            <p>
+              Usuários
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a [routerLink]="['/administrativo/categoria']" class="nav-link">
             <i class="nav-icon fas fa-list-alt"></i>
             <p>
@@ -26,21 +34,24 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="pages/produtos.html" class="nav-link">
+          <a [routerLink]="['/administrativo/produtos']" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Produtos
             </p>
           </a>
         </li>
+        
         <li class="nav-item">
-          <a [routerLink]="['/administrativo/usuarios']"class="nav-link">
-            <i class="nav-icon fas fa-list-alt"></i>
+          <a [routerLink]="['/administrativo/venda']" class="nav-link">
+            <i class="nav-icon fas fa-handshake"></i>
             <p>
-              Usuários
+              Vendas
             </p>
           </a>
         </li>
+        
+        
       </ul>
     </nav>
   </div>
