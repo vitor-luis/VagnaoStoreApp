@@ -29,6 +29,7 @@ import { ProdutosComponent } from './Painel-Administrativo/produtos-administrati
 import { ListarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/listarProdutos/listar-produtos.component';
 import { EditarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/editar-produtos/editar-produtos.component';
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
+import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 @NgModule({
@@ -52,7 +53,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ProdutosComponent,
     ListarProdutosComponent,
     EditarProdutosComponent,
-    ListarVendasComponent
+    ListarVendasComponent,
+    ListarCategoriasComponent
 
   ],
   imports: [
