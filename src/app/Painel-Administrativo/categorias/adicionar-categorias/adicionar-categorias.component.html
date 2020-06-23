@@ -1,0 +1,41 @@
+<div class="wrapper">
+    <app-header-administrativo></app-header-administrativo>
+    <app-sidebar-administrativo></app-sidebar-administrativo>
+    <div class="content-wrapper marginTopBottomContentContainerAdmin">
+        <br>
+        <h5 class="row marginContentContainerAdmin">Adicionar Categorias</h5>
+        <div class="row marginContentContainerAdmin">
+            <div id="categorias-column" class="cd-md-6">
+                <div id="categorias-box" class="cd-md-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form id="categorias-form" class="form" [formGroup]="categoriasForm" novalidate>
+                                <div class="row">
+                                    
+                                    <div class="form-group col-sm-4">
+                                        <label for="nome" class="text-center">Nome:</label><br>
+                                        <input type="text" name="nome" id="nome" class="form-control"
+                                            formControlName="nome">
+                                    </div>
+
+                                   
+
+                                    <div class="form-group col-sm-4">
+                                        <label for="descricao" class="text-center">Descrição</label><br>
+                                        <input type="text" name="descricao" class="form-control" placeholder="Descrição"
+                                            formControlName="descricao">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group positionButtons">
+                        <button (click)="onSubmit()" class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-control-sidebar-administrativo></app-control-sidebar-administrativo>
+    <app-footer-administrativo></app-footer-administrativo>
+</div>

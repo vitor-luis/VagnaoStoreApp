@@ -20,6 +20,9 @@ export class CategoriasService {
 
   getCategoria(id:number): Observable<HttpResponse<Categorias>>{
     return this.http.get<Categorias>(`${VagnaoAPI}/categorias/${id}`, { observe: 'response' })
+  }
   
+  postCategorias(form: Categorias) : Observable<HttpResponse<any>>{
+    return this.http.post<Categorias>(`${VagnaoAPI}/categorias/`, form, { observe: 'response' })
   }
 }
