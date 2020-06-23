@@ -27,7 +27,7 @@ export class ListarCategoriasComponent implements OnInit {
   }
 
   getAllCategorias(){
-    this.httpReq = this.service.getAllUsuarios().subscribe(response =>{
+    this.httpReq = this.service.getAllCategorias().subscribe(response =>{
       this.statusResponse = response.status
       this.messageApi = response.body['message']
       this.categorias = response.body['data']
