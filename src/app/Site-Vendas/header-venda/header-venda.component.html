@@ -23,19 +23,9 @@
             <span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
         </div>
         <nav class="menu">
-            <ul>
-                <li><a href="#" class="hyper"><span>Inicio</span></a></li>
-                <li><a href="#" class="hyper"><span>Tacos</span></a></li>
-
-                <li><a href="#" class="hyper"><span>Mesas</span></a></li>
-                <li><a href="#" class="hyper"><span>Outros</span></a>
-                    <ul class="dropdownMenu">
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">...</a></li>
-                    </ul>
-                </li>
-
+            <ul >
+                <li><a [routerLink]="['/']" class="hyper"><span>Inicio</span></a></li>
+                <li *ngFor = "let categoria of categorias"><a class="hyper"><span>{{categoria.nome}}</span></a></li>
             </ul>
         </nav>
         <div class="clearfix"></div>
