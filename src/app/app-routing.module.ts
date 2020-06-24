@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './commum/login/login.component';
 import { HomeVendaComponent } from './Site-Vendas/home-venda/home-venda.component';
@@ -12,6 +12,8 @@ import { ListarProdutosComponent } from './Painel-Administrativo/produtos-admini
 import { ProdutosComponent } from './Painel-Administrativo/produtos-administrativo/produtoss/produtos.component';
 import { EditarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/editar-produtos/editar-produtos.component';
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
+import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
+
 
 export const ROUTES: Routes = [
   { path: '',component: HomeVendaComponent, children: [
@@ -24,6 +26,10 @@ export const ROUTES: Routes = [
   ]},
   { path: 'administrativo', children:[
     { path: '', component: HomeAdministrativoComponent},
+   
+    { path: 'categorias', children:[
+    { path: '', component: ListarCategoriasComponent}
+    ]},
     { path: 'usuarios', children: [
       { path: '', component: ListarUsuariosComponent},
       { path: 'adicionar', component: AdicionarUsuariosComponent},
