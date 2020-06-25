@@ -17,6 +17,7 @@ import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/li
 import { HeaderVendaComponent } from './Site-Vendas/header-venda/header-venda.component';
 import { ListarCarrinhoComponent } from './Site-Vendas/listar-carrinho/listar-carrinho.component';
 import { AdicionarCategoriasComponent } from './Painel-Administrativo/categorias/adicionar-categorias/adicionar-categorias.component';
+import { EditarCategoriasComponent } from './Painel-Administrativo/categorias/editar-categorias/editar-categorias.component';
 
 
 export const ROUTES: Routes = [
@@ -34,7 +35,8 @@ export const ROUTES: Routes = [
    
     { path: 'categorias', children:[
     { path: '', component: ListarCategoriasComponent},
-    { path: 'adicionar', component: AdicionarCategoriasComponent}
+    { path: 'adicionar', component: AdicionarCategoriasComponent},
+    { path: 'editar/:id', component: EditarCategoriasComponent}
     ]},
     { path: 'usuarios', children: [
       { path: '', component: ListarUsuariosComponent},
