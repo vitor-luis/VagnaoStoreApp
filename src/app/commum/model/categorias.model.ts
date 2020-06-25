@@ -1,5 +1,5 @@
 export interface Categorias {
-    _id: number,
+    id: number,
     nome: string,
     descricao: string
 }

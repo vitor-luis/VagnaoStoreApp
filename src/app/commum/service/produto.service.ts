@@ -31,8 +31,8 @@ export class ProdutoService {
     return this.http.put<any>(`${VagnaoAPI}/produtos/${id}`,data, { observe: 'response' })
   }
 
-  deleteProdutos(produto: Produto) {
-    return this.http.delete<Produto>(`${VagnaoAPI}/produtos/${produto.id}`, { observe: 'response' })
+  deleteProdutos(id):Observable<HttpResponse<any>> {
+    return this.http.delete<any>(`${VagnaoAPI}/produtos/${id}`, {params: id, observe: 'response' })
   }
 
 

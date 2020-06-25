@@ -1,10 +1,7 @@
 .marginTopBottomContentContainerAdmin{
-    background-color:white;
-}
-
-.marginContentContainerAdmin{
     margin-left: 5%;
     margin-right: 5%;
+    background-color: white;
 }
 
 .positionTitle {
@@ -13,7 +10,4 @@
 
 .positionButtons {
     text-align: end;
-}
-.content-wrapper{
-    background-color: white !important;
 }

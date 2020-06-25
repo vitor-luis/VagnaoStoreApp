@@ -25,39 +25,31 @@
                                 <th>Descrição</th>
                                 <th>Estoque</th>
                                 <th>Preço</th>
-                                <th>URLImagem</th>
-                                <th>idCategoria</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let produto of produto">
+                            <tr class="pointer hoverRowTable" *ngFor="let produto of produto"  [routerLink]="['/administrativo/produtos/visualizar', produto['id']]">
                                 <th scope="row">
                                     <span>{{produto.id}}</span>
                                 </th>
 
-                                <th scope="row">
+                                <th>
                                     <span>{{produto.nome}}</span>
                                 </th>
-                                <th scope="row">
+                                <th >
                                     <span>{{produto.descricao}}</span>
                                 </th>
-                                    <th scope="row">    
+                                <th>    
                                     <span>{{produto.quantidadeEstoque}}</span>
                                 </th>
-                                    <th scope="row">
+                                <th>
                                     <span>{{produto.preco | currency:"R$"}}</span>
                                 </th>
-                                <th scope="row">
-                                    <span>{{produto.urlImagem}}</span>
-                                </th>
-                                <th scope="row">
-                                    <span>{{produto.idCategoria}}</span>
-                                </th>
-                               
-                                <th> 
-                                    <button class="btn btn-outline-warning btn-sm" [routerLink]="['/administrativo/produtos/'+ produto.id]">Editar</button>
-                                    <button class="btn btn-outline-danger btn-sm" (click)="deleteProdutos(produto)" > Excluir</button>
+                                
+                                <th (click)="$event.stopPropagation()">
+                                    <button class="btn btn-outline-warning btn-sm" [routerLink]="['/administrativo/produtos/editar', produto['id']]">Editar</button>&nbsp;
+                                    <button class="btn btn-outline-danger btn-sm" (click)="canDelete(produto['nome'], produto['id'])" > Excluir</button>
                                 </th>
                             </tr>
                         </tbody>

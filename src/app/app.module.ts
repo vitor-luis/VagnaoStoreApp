@@ -25,11 +25,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalDialogComponent } from './commum/modals/modal-dialog/modal-dialog.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { EditarUsuarioComponent } from './Painel-Administrativo/usuarios/editar-usuario/editar-usuario.component';
-import { ProdutosComponent } from './Painel-Administrativo/produtos-administrativo/produtoss/produtos.component';
-import { ListarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/listarProdutos/listar-produtos.component';
+import { ProdutosComponent } from './Painel-Administrativo/produtos-administrativo/adicionar-produtos/produtos.component';
+import { ListarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/listar-produtos/listar-produtos.component';
 import { EditarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/editar-produtos/editar-produtos.component';
+import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/visualizar-produtos/visualizar-produtos.component';
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
+
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 @NgModule({
@@ -54,7 +56,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ListarProdutosComponent,
     EditarProdutosComponent,
     ListarVendasComponent,
-    ListarCategoriasComponent
+    ListarCategoriasComponent,
+    VisualizarProdutosComponent
 
   ],
   imports: [
