@@ -1,0 +1,71 @@
+<div class="wrapper">
+    <app-header-administrativo></app-header-administrativo>
+    <app-sidebar-administrativo></app-sidebar-administrativo>
+    <div class="content-wrapper marginTopBottomContentContainerAdmin">
+        <br>
+        <div class="marginTopBottomContentContainerAdmin">
+            <div class="row">
+                <div class="col-sm-8 positionTitle">
+                    <h5>Visualizar Produto</h5>
+                </div>
+                <div class="col-sm-4 positionButtons">
+                    <button type="button" class="btn btn-outline-warning btn-sm" [routerLink]="['/administrativo/produtos/editar', produto['id']]">Editar</button>&nbsp;
+                    
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="canDelete(produto['nome'], produto['id'])">Excluir</button>
+                </div>
+            </div>
+            <br>
+            <div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="form-control-label">Nome</label>
+                        <div>
+                            {{produto.nome}}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="form-control-label">Preço</label>
+                        <div>
+                            {{produto.preco}}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="form-control-label">Descricao</label>
+                        <div>
+                            {{produto.descricao}}
+                        </div>
+                    </div>
+                    </div>
+                    <br>
+                        <div class="row">   
+                            
+                            <div class="col-sm-4">
+                                <label class="form-control-label">Estoque</label>
+                                <div>
+                                    {{produto.quantidadeEstoque}}
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                            <label class="form-control-label">URL</label>
+                            <div>
+
+                                {{produto.urlImagem}}
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-4">
+                            <label class="form-control-label">Categoria</label>
+                            <div>
+                                {{categorias.nome}}  
+                            </div>
+                        </div>
+                    </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+    <app-control-sidebar-administrativo></app-control-sidebar-administrativo>
+    <app-footer-administrativo></app-footer-administrativo>
+</div>

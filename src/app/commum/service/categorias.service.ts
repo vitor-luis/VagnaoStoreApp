@@ -18,4 +18,8 @@ export class CategoriasService {
     return this.http.get<Categorias[]>(`${VagnaoAPI}/categorias/`, { observe: 'response' })
   }
 
+  getCategoria(id:number): Observable<HttpResponse<Categorias>>{
+    return this.http.get<Categorias>(`${VagnaoAPI}/categorias/${id}`, { observe: 'response' })
+  
+  }
 }

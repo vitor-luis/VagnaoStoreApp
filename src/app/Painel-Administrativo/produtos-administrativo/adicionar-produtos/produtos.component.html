@@ -3,7 +3,7 @@
     <app-sidebar-administrativo></app-sidebar-administrativo>
     <div class="content-wrapper marginTopBottomContentContainerAdmin">
         <br>
-        <h5 class="row marginContentContainerAdmin">Editar Produto</h5>
+        <h5 class="row marginContentContainerAdmin">Adicionar Produtos</h5>
         <div class="row marginContentContainerAdmin">
             <div id="login-column" class="cd-md-6">
                 <div id="login-box" class="cd-md-12">
@@ -15,17 +15,17 @@
                                         <label for="nome" class="text-center">Nome: </label><br>
                                         <input type="text" name="nome" id="nome" class="form-control" formControlName="nome">
                                     </div>
-                                    
-    
-                                    <div class="form-group col-sm-4">
-                                        <label for="descricao" class="text-center">Descrição: </label><br>
-                                        <textarea  name="descricao" id="descricao" class="form-control" formControlName="descricao">
-                                        </textarea>
-                                        </div>
+                               
 
                                     <div class="form-group col-sm-4">
                                         <label for="preco" class="text-center">Preço: </label><br>
                                         <input type="text" name="preco" id="preco" class="form-control" formControlName="preco">
+                                    </div>
+
+     
+                                    <div class="form-group col-sm-4">
+                                        <label for="descricao" class="text-center">Descrição: </label><br>
+                                        <textarea type="text" name="descricao" id="descricao" class="form-control" formControlName="descricao" rows="3" ></textarea>
                                     </div>
 
                                     <div class="form-group col-sm-4">
@@ -37,14 +37,22 @@
                                         <label for="urlImagem" class="text-center">URL: </label><br>
                                         <input type="text" name="urlImagem" id="urlImagem" class="form-control" formControlName="urlImagem">
                                     </div>
-
-
+                                    
+                                    <div class="form-group col-sm-4">
+                                      <label for="idCategoria" class="text-center">Categoria: </label><br>
+                                      <select  name="idCategoria" id="idCategoria" class="form-control" formControlName="idCategoria">
+                                        <option disabled></option>
+                                        <option *ngFor="let categoria of categorias" value={{categoria.id}}>{{categoria.nome}}</option>
+                                    </select>
+                                  </div>                                    
                                 </div>
                             </form>
                         </div>
+                        
+                        
                     </div>
                     <div class="form-group positionButtons">
-                        <button (click)="onSubmit()" class="btn btn-success" [disabled]="!produtoForm.valid">Salvar</button>
+                        <button (click)="onSubmit()" class="btn btn-success"  [disabled]='!produtoForm.valid'>Salvar</button>
                     </div>
                 </div>
             </div>
