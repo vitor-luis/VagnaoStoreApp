@@ -16,6 +16,7 @@ import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-ad
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
 import { AdicionarCategoriasComponent } from './Painel-Administrativo/categorias/adicionar-categorias/adicionar-categorias.component';
+import { EditarCategoriasComponent } from './Painel-Administrativo/categorias/editar-categorias/editar-categorias.component';
 
 
 export const ROUTES: Routes = [
@@ -32,7 +33,8 @@ export const ROUTES: Routes = [
    
     { path: 'categorias', children:[
     { path: '', component: ListarCategoriasComponent},
-    { path: 'adicionar', component: AdicionarCategoriasComponent}
+    { path: 'adicionar', component: AdicionarCategoriasComponent},
+    { path: 'editar/:id', component: EditarCategoriasComponent}
     ]},
     { path: 'usuarios', children: [
       { path: '', component: ListarUsuariosComponent},

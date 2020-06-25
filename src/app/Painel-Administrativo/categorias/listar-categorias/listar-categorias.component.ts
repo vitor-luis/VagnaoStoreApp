@@ -33,4 +33,10 @@ export class ListarCategoriasComponent implements OnInit {
       this.categorias = response.body['data']
     })
   }
+
+  deleteCategorias(categorias: Categorias) {
+    this.service.deleteCategorias(categorias).subscribe(() => {
+      this.getAllCategorias();
+    });
+  }
 }

@@ -32,6 +32,7 @@ import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-ad
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
 import { AdicionarCategoriasComponent } from './Painel-Administrativo/categorias/adicionar-categorias/adicionar-categorias.component';
+import { EditarCategoriasComponent } from './Painel-Administrativo/categorias/editar-categorias/editar-categorias.component';
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -58,8 +59,13 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     EditarProdutosComponent,
     ListarVendasComponent,
     ListarCategoriasComponent,
+<<<<<<< HEAD
     VisualizarProdutosComponent,
     AdicionarCategoriasComponent
+=======
+    AdicionarCategoriasComponent,
+    EditarCategoriasComponent
+>>>>>>> fa513b7... criacao do adicionar/editar/excluir de categorias
 
   ],
   imports: [

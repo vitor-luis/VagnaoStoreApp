@@ -46,11 +46,25 @@
                                 <th>
                                     <span>{{produto.preco | currency:"R$"}}</span>
                                 </th>
+<<<<<<< HEAD:src/app/Painel-Administrativo/produtos-administrativo/listar-produtos/listar-produtos.component.html
                                 
                                 <th (click)="$event.stopPropagation()">
                                     <button class="btn btn-outline-warning btn-sm" [routerLink]="['/administrativo/produtos/editar', produto['id']]">Editar</button>&nbsp;
                                     <button class="btn btn-outline-danger btn-sm" (click)="canDelete(produto['nome'], produto['id'])" > Excluir</button>
                                 </th>
+=======
+                                <th scope="row">
+                                    <span>{{produto.urlImagem}}</span>
+                                </th>
+                                <th scope="row">
+                                    <span>{{produto.idCategoria}}</span>
+                                </th>
+                               
+                                <th> 
+                                    <button class="btn btn-outline-warning btn-sm" [routerLink]="['/administrativo/produtos/'+ produto.id]">Editar</button>
+                                    <button class="btn btn-outline-danger btn-sm" (click)="deleteProdutos(produto)" > Excluir</button>
+                                </th>                              
+>>>>>>> fa513b7... criacao do adicionar/editar/excluir de categorias:src/app/Painel-Administrativo/produtos-administrativo/listarProdutos/listar-produtos.component.html
                             </tr>
                         </tbody>
                     </table>
