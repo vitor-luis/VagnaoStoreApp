@@ -13,7 +13,6 @@ export class ProdutoService {
   params = new HttpParams()
 
   getAllProdutos(): Observable<HttpResponse<Produto[]>> {
-    console.log(VagnaoAPI);
     return this.http.get<Produto[]>(`${VagnaoAPI}/produtos/`, { observe: 'response' })
   }
   
@@ -35,9 +34,9 @@ export class ProdutoService {
     return this.http.delete<any>(`${VagnaoAPI}/produtos/${id}`, {params: id, observe: 'response' })
   }
 
-
-  
-  
+  getProdutosPorCategoria(id: number): Observable<HttpResponse<Produto>>{
+    return this.http.get<Produto>(`${VagnaoAPI}/produtos/categoria/${id}`, { observe: 'response' })
+  }
 }
 
 

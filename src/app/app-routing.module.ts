@@ -15,11 +15,13 @@ import { EditarProdutosComponent } from './Painel-Administrativo/produtos-admini
 import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/visualizar-produtos/visualizar-produtos.component';
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
+import { ListarProdutoPorCategoriaComponent } from './Site-Vendas/listar-produto-por-categoria/listar-produto-por-categoria.component';
 
 
 export const ROUTES: Routes = [
-  { path: '',component: HomeVendaComponent, children: [
-
+  { path: '', children: [
+    {path: '', component: HomeVendaComponent},
+    {path: 'listar/:id', component: ListarProdutoPorCategoriaComponent}
   ]},
   //rota login
   { path: 'login', children: [

@@ -31,6 +31,7 @@ import { EditarProdutosComponent } from './Painel-Administrativo/produtos-admini
 import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/visualizar-produtos/visualizar-produtos.component';
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
+import { ListarProdutoPorCategoriaComponent } from './Site-Vendas/listar-produto-por-categoria/listar-produto-por-categoria.component';
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -57,7 +58,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     EditarProdutosComponent,
     ListarVendasComponent,
     ListarCategoriasComponent,
-    VisualizarProdutosComponent
+    VisualizarProdutosComponent,
+    ListarProdutoPorCategoriaComponent
 
   ],
   imports: [

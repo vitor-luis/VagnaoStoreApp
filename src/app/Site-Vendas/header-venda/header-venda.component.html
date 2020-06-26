@@ -24,8 +24,8 @@
         </div>
         <nav class="menu">
             <ul >
-                <li><a [routerLink]="['/']" class="hyper"><span>Inicio</span></a></li>
-                <li *ngFor = "let categoria of categorias"><a class="hyper"><span>{{categoria.nome}}</span></a></li>
+                <li (click)="direcionar(0)"><a class="hyper"><span>Inicio</span></a></li>
+                <li *ngFor = "let categoria of categorias" (click)="direcionar(categoria.id)"><a class="hyper"><span>{{categoria.nome}}</span></a></li>
             </ul>
         </nav>
         <div class="clearfix"></div>

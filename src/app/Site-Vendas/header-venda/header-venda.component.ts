@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Categorias } from 'src/app/commum/model/categorias.model';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { CategoriasService } from 'src/app/commum/service/categorias.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-venda',
@@ -19,7 +20,8 @@ export class HeaderVendaComponent implements OnInit {
   modalRef: BsModalRef
 
   constructor(
-    private service: CategoriasService
+    private service: CategoriasService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,9 +32,16 @@ export class HeaderVendaComponent implements OnInit {
     this.httpReq = this.service.getAllCategorias().subscribe(response => {
       this.statusResponse = response.status
       this.messageApi = response.body['message']
-      console.log(response.body['data'])
       this.categorias = response.body['data']
     })
+  }
+
+  direcionar(idCategoria: number){
+    console.log(idCategoria)
+    if(idCategoria == 0){
+      this.router.navigate(['/'])
+    }
+    this.router.navigate(['/listar', idCategoria])
   }
 
 }

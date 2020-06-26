@@ -29,7 +29,6 @@ export class ListarVendasComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProdutos()
-    console.log(this.venda);
   }
 
 

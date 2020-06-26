@@ -13,7 +13,6 @@ export class VendasService {
   params = new HttpParams()
 
   getAllVendas(): Observable<HttpResponse<Vendas[]>> {
-    console.log(VagnaoAPI);
     return this.http.get<Vendas[]>(`${VagnaoAPI}/venda/`, { observe: 'response' })
   }
   
