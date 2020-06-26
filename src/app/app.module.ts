@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './commum/login/login.component';
 import { FooterVendaComponent } from './Site-Vendas/footer-venda/footer-venda.component';
 import { HeaderVendaComponent } from './Site-Vendas/header-venda/header-venda.component';
-import { HomeVendaComponent } from './Site-Vendas/home-venda/home-venda.component';
 import { SidebarAdministrativoComponent } from './Painel-Administrativo/sidebar-administrativo/sidebar-administrativo.component';
 import { HeaderAdministrativoComponent } from './Painel-Administrativo/header-administrativo/header-administrativo.component';
 import { FooterAdministrativoComponent } from './Painel-Administrativo/footer-administrativo/footer-administrativo.component';
@@ -31,7 +30,6 @@ import { EditarProdutosComponent } from './Painel-Administrativo/produtos-admini
 import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/visualizar-produtos/visualizar-produtos.component';
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
-import { ListarProdutoPorCategoriaComponent } from './Site-Vendas/listar-produto-por-categoria/listar-produto-por-categoria.component';
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -41,7 +39,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     LoginComponent,
     FooterVendaComponent,
     HeaderVendaComponent,
-    HomeVendaComponent,
     SidebarAdministrativoComponent,
     HeaderAdministrativoComponent,
     FooterAdministrativoComponent,
@@ -58,8 +55,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     EditarProdutosComponent,
     ListarVendasComponent,
     ListarCategoriasComponent,
-    VisualizarProdutosComponent,
-    ListarProdutoPorCategoriaComponent
+    VisualizarProdutosComponent
 
   ],
   imports: [

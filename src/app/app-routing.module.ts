@@ -2,7 +2,6 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './commum/login/login.component';
-import { HomeVendaComponent } from './Site-Vendas/home-venda/home-venda.component';
 import { HomeAdministrativoComponent } from './Painel-Administrativo/home-administrativo/home-administrativo.component';
 import { RegistrarLoginComponent } from './commum/login-registrar/registrar-login.component';
 import { ListarUsuariosComponent } from './Painel-Administrativo/usuarios/listar-usuarios/listar-usuarios.component';
@@ -15,13 +14,12 @@ import { EditarProdutosComponent } from './Painel-Administrativo/produtos-admini
 import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/visualizar-produtos/visualizar-produtos.component';
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
-import { ListarProdutoPorCategoriaComponent } from './Site-Vendas/listar-produto-por-categoria/listar-produto-por-categoria.component';
+import { HeaderVendaComponent } from './Site-Vendas/header-venda/header-venda.component';
 
 
 export const ROUTES: Routes = [
   { path: '', children: [
-    {path: '', component: HomeVendaComponent},
-    {path: 'listar/:id', component: ListarProdutoPorCategoriaComponent}
+    {path: '', component: HeaderVendaComponent},
   ]},
   //rota login
   { path: 'login', children: [

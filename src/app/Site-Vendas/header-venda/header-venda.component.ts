@@ -4,6 +4,8 @@ import { Categorias } from 'src/app/commum/model/categorias.model';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { CategoriasService } from 'src/app/commum/service/categorias.service';
 import { Router } from '@angular/router';
+import { Produto } from 'src/app/commum/model/produtos.model';
+import { ProdutoService } from 'src/app/commum/service/produto.service';
 
 @Component({
   selector: 'app-header-venda',
@@ -15,17 +17,20 @@ export class HeaderVendaComponent implements OnInit {
   private httpReq: Subscription
 
   categorias: Categorias[] = null
+  produtos: Produto[]
   statusResponse: number
   messageApi: string
   modalRef: BsModalRef
 
   constructor(
     private service: CategoriasService,
+    private _service: ProdutoService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getCategoriasParaMenu()
+    this.getAllProdutos()
   }
 
   getCategoriasParaMenu(){
@@ -37,11 +42,26 @@ export class HeaderVendaComponent implements OnInit {
   }
 
   direcionar(idCategoria: number){
-    console.log(idCategoria)
-    if(idCategoria == 0){
-      this.router.navigate(['/'])
+    if(idCategoria == null){
+      this.getAllProdutos()
+    }else{
+      this.getProdutosPorCategoria(idCategoria)
     }
-    this.router.navigate(['/listar', idCategoria])
+    // this.router.navigate(['/listar', idCategoria])
+  }
+
+  getAllProdutos(){
+    this.httpReq = this._service.getAllProdutos().subscribe(response =>{
+      this.messageApi = response.body['message']
+      this.produtos = response.body['data']
+    })
+  }
+
+  getProdutosPorCategoria(idCategoria: number){
+    this.httpReq = this._service.getProdutosPorCategoria(idCategoria).subscribe(response =>{
+      this.messageApi = response.body['message']
+      this.produtos = response.body['data']
+    })
   }
 
 }
