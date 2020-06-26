@@ -41,13 +41,13 @@ export class ProdutosComponent implements OnInit {
     descricao: ['', [Validators.required]],
     preco: ['', [Validators.required]],
     quantidadeEstoque: ['', [Validators.required]],      
-    urlImagem: ['', [Validators.required]],
+    urlImagem: [''],
     idCategoria: ['', [Validators.required]]
     })
   }
 
   getAllCategorias(){
-    this.httpReq = this.serviceC.getAllUsuarios().subscribe(response =>{
+    this.httpReq = this.serviceC.getAllCategorias().subscribe(response =>{
       this.statusResponse = response.status
       this.messageApi = response.body['message']
       this.categorias = response.body['data']  

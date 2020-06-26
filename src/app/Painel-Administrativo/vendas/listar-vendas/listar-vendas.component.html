@@ -17,7 +17,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Valor Total</th>
                                 <th>Data da Venda</th>
                             </tr>
@@ -25,22 +24,14 @@
                         <tbody>
                             <tr *ngFor="let venda of venda">
                                 <th scope="row">
-                                    <span>{{venda.id}}</span>
-                                </th>
-
-                                <th scope="row">
                                     <span>{{venda.total | currency:"R$"}}</span>
                                 </th>
                                 <th scope="row">
                                     <span>{{venda.data | date: 'dd/MM/yyyy'}}</span>
                                 </th>
-                                 
-                                <th> 
-                                </th>
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

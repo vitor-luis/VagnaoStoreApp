@@ -14,7 +14,7 @@ export class CategoriasService {
 
   params = new HttpParams()
 
-  getAllUsuarios(): Observable<HttpResponse<Categorias[]>> {
+  getAllCategorias(): Observable<HttpResponse<Categorias[]>> {
     return this.http.get<Categorias[]>(`${VagnaoAPI}/categorias/`, { observe: 'response' })
   }
 
