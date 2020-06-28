@@ -14,12 +14,15 @@ import { element } from 'protractor';
 import { ToastrService } from 'ngx-toastr';
 import { LoginComponent } from 'src/app/commum/login/login.component';
 import { AppComponent } from 'src/app/app.component';
+import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
+import { Cliente } from 'src/app/commum/model/cliente.model';
 
 @Component({
   selector: 'app-header-venda',
   templateUrl: './header-venda.component.html',
   styleUrls: ['./header-venda.component.css']
 })
+
 export class HeaderVendaComponent implements OnInit {
 
   private httpReq: Subscription
@@ -34,7 +37,9 @@ export class HeaderVendaComponent implements OnInit {
   messageApi: string
   modalRef: BsModalRef
   quantidadeItens: number = null
-  vendaId: number
+  vendaId: number = null
+  idLogin: number
+  cliente: Cliente
   
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -48,6 +53,12 @@ export class HeaderVendaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.vendaId = variaveisGlobais.idVenda
+    this.quantidadeItens = variaveisGlobais.quantidade
+    if(variaveisGlobais.idlogin != null){
+      this.idLogin = variaveisGlobais.idlogin
+      this.cliente = variaveisGlobais.cliente[0]
+    }
     this.iniciaFormVenda()
     this.getCategoriasParaMenu()
     this.getAllProdutos()
@@ -90,6 +101,8 @@ export class HeaderVendaComponent implements OnInit {
       this.vendaForm.value.efetuada = 0
       this.httpReq = this.serviceVenda.postVenda(this.vendaForm.value).pipe().subscribe(res => {
         this.vendaForm.value.id = res.body['data']
+        this.vendaId = this.vendaForm.value.id
+        variaveisGlobais.idVenda = this.vendaForm.value.id
         this.adicionarItemVenda(produto)
       }, err => {
         this.vendaForm.reset()
@@ -126,6 +139,7 @@ export class HeaderVendaComponent implements OnInit {
     this.httpReq = this.ItemVendaService.updateItemVenda(this.itemVenda.id,this.itemVendaForm.value).subscribe(res=>{
       this.showToastrSuccess
       this.quantidadeItens++;
+      variaveisGlobais.quantidade++;
     }, err =>{
       this.showToastrError
     })
@@ -140,6 +154,7 @@ export class HeaderVendaComponent implements OnInit {
     this.httpReq = this.ItemVendaService.postItemVenda(this.itemVendaForm.value).subscribe(res => {
       this.itemVendaForm.reset()
       this.quantidadeItens++;
+      variaveisGlobais.quantidade++;
       this.showToastrSuccess
     }, err => {
       this.itemVendaForm.reset()
@@ -162,6 +177,13 @@ export class HeaderVendaComponent implements OnInit {
       quantidade: ['', [Validators.required]],
       total: ['', [Validators.required]]
     })
+  }
+
+  logout(){
+    variaveisGlobais.idlogin = null
+    variaveisGlobais.cliente = null
+    this.idLogin = null
+    this.cliente = null
   }
 
   showToastrSuccess() {
