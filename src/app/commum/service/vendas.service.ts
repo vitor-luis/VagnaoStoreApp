@@ -13,8 +13,11 @@ export class VendasService {
   params = new HttpParams()
 
   getAllVendas(): Observable<HttpResponse<Vendas[]>> {
-    console.log(VagnaoAPI);
     return this.http.get<Vendas[]>(`${VagnaoAPI}/venda/`, { observe: 'response' })
+  }
+
+  postVenda(form): Observable<HttpResponse<any>>{
+    return this.http.post<Vendas>(`${VagnaoAPI}/venda/`, form, { observe: 'response' })
   }
   
 }

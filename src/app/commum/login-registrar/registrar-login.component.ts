@@ -38,7 +38,7 @@ export class RegistrarLoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email:  ['', [Validators.required, Validators.email]],
       senha:  ['', [Validators.required]],
-      isAdmin:  [1, [Validators.required]]
+      isAdmin:  [0, [Validators.required]]
     })
     this.clienteForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
