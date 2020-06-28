@@ -28,15 +28,6 @@ export class ListarUsuariosComponent implements OnInit {
     private modal: BsModalService
   ) { }
 
-  configLoadingModal: ModalOptions = {
-    backdrop: 'static',
-    keyboard: false,
-    initialState: {
-      message: "Excluindo notícia...",
-      withFooter: false
-    }
-  }
-
   ngOnInit(): void {
     this.getAllUsuarios()
   }

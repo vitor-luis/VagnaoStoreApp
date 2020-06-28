@@ -19,7 +19,7 @@ import { HeaderVendaComponent } from './Site-Vendas/header-venda/header-venda.co
 
 export const ROUTES: Routes = [
   { path: '', children: [
-    {path: '', component: HeaderVendaComponent},
+    {path: '', component: HeaderVendaComponent}
   ]},
   //rota login
   { path: 'login', children: [

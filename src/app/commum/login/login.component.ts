@@ -5,6 +5,8 @@ import { LoginService } from '../service/login.service';
 import { Login } from '../model/login.model';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
+import { HeaderVendaComponent } from 'src/app/Site-Vendas/header-venda/header-venda.component';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
   login: Login = null
   statusResponse: number
   messageApi: string
+  appComponent: AppComponent
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,7 +46,7 @@ export class LoginComponent implements OnInit {
         if (response.isAdmin == 1) {
           this.router.navigate(['administrativo'])
         } else {
-          this.router.navigate(['/'])
+          this.router.navigate([''])
         }
       }
     }, err =>{
