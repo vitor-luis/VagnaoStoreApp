@@ -47,9 +47,9 @@ export class EditarCategoriasComponent implements OnInit {
       }
 
       getCategorias(id : number){
-        this.httpReq = this.service.getCategorias(id).subscribe(response =>{
+        this.httpReq = this.service.getCategoria(id).subscribe(response =>{
           this.messageApi = response.body['message']
-          this.categorias = response.body.data[0];
+          this.categorias = response.body['data']
           console.log(this.categorias)
            this.populateForm()
         }, err=>{

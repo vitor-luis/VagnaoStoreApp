@@ -35,6 +35,7 @@ import { NgxCurrencyModule } from "ngx-currency";
 import { AngularValidateBrLibModule } from 'angular-validate-br';
 import { AdicionarCategoriasComponent } from './Painel-Administrativo/categorias/adicionar-categorias/adicionar-categorias.component';
 import { EditarCategoriasComponent } from './Painel-Administrativo/categorias/editar-categorias/editar-categorias.component';
+import { VisualizarCategoriasComponent } from './Painel-Administrativo/categorias/visualizar-categorias/visualizar-categorias.component';
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -60,14 +61,11 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     EditarProdutosComponent,
     ListarVendasComponent,
     ListarCategoriasComponent,
-<<<<<<< HEAD
     VisualizarProdutosComponent,
     ListarCarrinhoComponent,
-    AdicionarCategoriasComponent
-=======
     AdicionarCategoriasComponent,
-    EditarCategoriasComponent
->>>>>>> fa513b7... criacao do adicionar/editar/excluir de categorias
+    EditarCategoriasComponent,
+    VisualizarCategoriasComponent
 
   ],
   imports: [

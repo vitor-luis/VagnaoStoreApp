@@ -18,21 +18,14 @@ export class CategoriasService {
     return this.http.get<Categorias[]>(`${VagnaoAPI}/categorias/`, { observe: 'response' })
   }
 
-<<<<<<< HEAD
   getCategoria(id:number): Observable<HttpResponse<Categorias>>{
     return this.http.get<Categorias>(`${VagnaoAPI}/categorias/${id}`, { observe: 'response' })
   }
   
-=======
-    getCategorias(id:number): Observable<HttpResponse<Categorias>>{
-    return this.http.get<Categorias>(`${VagnaoAPI}/categorias/${id}`, { observe: 'response' })
-  }
-
   updateCategorias(data:Categorias, id ): Observable<HttpResponse<any>> {
     return this.http.put<any>(`${VagnaoAPI}/categorias/${id}`,data, { observe: 'response' })
   }
 
->>>>>>> fa513b7... criacao do adicionar/editar/excluir de categorias
   postCategorias(form: Categorias) : Observable<HttpResponse<any>>{
     return this.http.post<Categorias>(`${VagnaoAPI}/categorias/`, form, { observe: 'response' })
   }
@@ -41,5 +34,12 @@ export class CategoriasService {
     return this.http.delete<Categorias>(`${VagnaoAPI}/categorias/${categorias.id}`, { observe: 'response' })
   }
 
+  deleteProdutos(id):Observable<HttpResponse<any>> {
+    return this.http.delete<any>(`${VagnaoAPI}/produtos/${id}`, {params: id, observe: 'response' })
+  }
+
+  deleteCategoria(id):Observable<HttpResponse<any>>{
+    return this.http.delete<any>(`${VagnaoAPI}/categorias/${id}`, {params: id, observe: 'response' })
+  }
 
 }
