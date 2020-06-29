@@ -19,5 +19,9 @@ export class VendasService {
   postVenda(form): Observable<HttpResponse<any>>{
     return this.http.post<Vendas>(`${VagnaoAPI}/venda/`, form, { observe: 'response' })
   }
+
+  deleteVenda(id): Observable<HttpResponse<any>>{
+    return this.http.delete<Vendas>(`${VagnaoAPI}/venda/${id}`, { observe: 'response' })
+  }
   
 }

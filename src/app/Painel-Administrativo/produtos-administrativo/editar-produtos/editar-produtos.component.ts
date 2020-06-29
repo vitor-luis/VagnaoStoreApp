@@ -56,7 +56,7 @@ initForm(){
 }
 
 getAllCategorias(){
-  this.httpReq = this.serviceC.getAllUsuarios().subscribe(response =>{
+  this.httpReq = this.serviceC.getAllCategorias().subscribe(response =>{
     this.statusResponse = response.status
     this.messageApi = response.body['message']
     this.categorias = response.body['data']  

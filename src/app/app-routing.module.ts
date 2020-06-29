@@ -16,41 +16,57 @@ import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-ven
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
 import { HeaderVendaComponent } from './Site-Vendas/header-venda/header-venda.component';
 import { ListarCarrinhoComponent } from './Site-Vendas/listar-carrinho/listar-carrinho.component';
+import { VendaComponent } from './Site-Vendas/venda/venda.component';
 
 
 export const ROUTES: Routes = [
-  { path: '', children: [
-    {path: '', component: HeaderVendaComponent},
-    {path: 'carrinho/:id', component: ListarCarrinhoComponent}
-  ]},
-  //rota login
-  { path: 'login', children: [
-    { path: '', component: LoginComponent},
-    { path: 'registrar', component: RegistrarLoginComponent},
-  ]},
-  { path: 'administrativo', children:[
-    { path: '', component: HomeAdministrativoComponent},
-   
-    { path: 'categorias', children:[
-    { path: '', component: ListarCategoriasComponent}
-    ]},
-    { path: 'usuarios', children: [
-      { path: '', component: ListarUsuariosComponent},
-      { path: 'adicionar', component: AdicionarUsuariosComponent},
-      { path: 'visualizar/:email', component: VisualizarUsuarioComponent},
-      { path: 'editar/:email', component: EditarUsuarioComponent}
-    ]},
-    {path: 'produtos', children:[
-      { path: '', component: ListarProdutosComponent}, 
-      { path: 'adicionar', component: ProdutosComponent },
-      { path: 'visualizar/:id', component: VisualizarProdutosComponent},
-      { path: 'editar/:id', component: EditarProdutosComponent}
-    ]},
-    {path: 'venda', children:[
-      { path: '', component: ListarVendasComponent}, 
-    ]}
+  {
+    path: '', children: [
+      { path: '', component: HeaderVendaComponent },
+      { path: 'carrinho/:id', component: ListarCarrinhoComponent },
+      { path: 'venda/:id', component: VendaComponent }
+    ]
+  },
 
-  ]}
+  {
+    path: 'login', children: [
+      { path: '', component: LoginComponent },
+      { path: 'registrar', component: RegistrarLoginComponent },
+    ]
+  },
+
+  {
+    path: 'administrativo', children: [
+      { path: '', component: HomeAdministrativoComponent },
+      {
+        path: 'categorias', children: [
+          { path: '', component: ListarCategoriasComponent }
+        ]
+      },
+      {
+        path: 'usuarios', children: [
+          { path: '', component: ListarUsuariosComponent },
+          { path: 'adicionar', component: AdicionarUsuariosComponent },
+          { path: 'visualizar/:email', component: VisualizarUsuarioComponent },
+          { path: 'editar/:email', component: EditarUsuarioComponent }
+        ]
+      },
+      {
+        path: 'produtos', children: [
+          { path: '', component: ListarProdutosComponent },
+          { path: 'adicionar', component: ProdutosComponent },
+          { path: 'visualizar/:id', component: VisualizarProdutosComponent },
+          { path: 'editar/:id', component: EditarProdutosComponent }
+        ]
+      },
+      {
+        path: 'venda', children: [
+          { path: '', component: ListarVendasComponent },
+        ]
+      }
+
+    ]
+  }
 ];
 
 @NgModule({

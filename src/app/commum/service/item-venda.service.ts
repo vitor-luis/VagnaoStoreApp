@@ -29,4 +29,8 @@ export class ItemVendaService {
   getProdutosDeUmaVenda(id):Observable<HttpResponse<any[]>> {
     return this.http.get<ProdutoItemVenda[]>(`${VagnaoAPI}/itemVendas/produto/${id}`, { params: id, observe: 'response' })
   }
+
+  deleteItemVenda(id):Observable<HttpResponse<any[]>> {
+    return this.http.delete<ProdutoItemVenda[]>(`${VagnaoAPI}/itemVendas/${id}`, { params: id, observe: 'response' })
+  }
 }

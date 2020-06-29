@@ -32,7 +32,8 @@
 </div>
 <br>
 <br>
-<div class="marginTopBottomContentContainerAdmin">
+
+<div class="marginTopBottomContentContainerAdmin" *ngIf="itensVenda != null">
     <table class="table table-hover">
         <thead>
             <tr>
@@ -50,7 +51,8 @@
                 </th>
                 <th scope="row">
                     <i disabled *ngIf="produto.quantidade < 2" class="fas fa-minus teste"></i>
-                    <i *ngIf="produto.quantidade > 1" class="fas fa-minus" (click)="retirarProduto(produto)"></i>&nbsp;&nbsp;
+                    <i *ngIf="produto.quantidade > 1" class="fas fa-minus"
+                        (click)="retirarProduto(produto)"></i>&nbsp;&nbsp;
                     <span>{{produto.quantidade}}</span>&nbsp;&nbsp;
                     <i class="fas fa-plus" (click)="adicionarProduto(produto)"></i>
                 </th>
@@ -61,7 +63,7 @@
                     <span>{{produto.total}}</span>
                 </th>
                 <th scope="row">
-                    <button class="btn btn-outline-danger btn-sm"> Excluir</button>
+                    <button class="btn btn-outline-danger btn-sm" (click)="excluir(produto)"> Excluir</button>
                 </th>
             </tr>
         </tbody>
@@ -74,6 +76,12 @@
         </h5>
     </div>
     <div class="positionButtons compra">
-        <button type="button" class="btn btn-outline-success btn-sm botao">Efetuar Compra</button>
+        <button type="button" class="btn btn-outline-success btn-sm botao" [routerLink]="['/venda', vendaId]">Efetuar Compra</button>
     </div>
+</div>
+
+<div *ngIf="itensVenda == null" class="alinharCentro">
+    <br><br><br><br>
+    <h1>Não há itens da venda</h1>
+    <button type="button" class="btn btn-outline-danger btn-sm botao" [routerLink]="['']">Continue Comprando</button>
 </div>
