@@ -59,6 +59,7 @@ export class ListarUsuariosComponent implements OnInit {
       })
     })
   }
+  
 
   showToastrSuccess() {
     this.toastr.success('Usuário foi excluido com sucesso', null, {

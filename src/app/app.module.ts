@@ -33,6 +33,9 @@ import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/li
 import { ListarCarrinhoComponent } from './Site-Vendas/listar-carrinho/listar-carrinho.component';
 import { NgxCurrencyModule } from "ngx-currency";
 import { AngularValidateBrLibModule } from 'angular-validate-br';
+import { AdicionarCategoriasComponent } from './Painel-Administrativo/categorias/adicionar-categorias/adicionar-categorias.component';
+import { EditarCategoriasComponent } from './Painel-Administrativo/categorias/editar-categorias/editar-categorias.component';
+import { VisualizarCategoriasComponent } from './Painel-Administrativo/categorias/visualizar-categorias/visualizar-categorias.component';
 import { VendaComponent } from './Site-Vendas/venda/venda.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -60,6 +63,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ListarCategoriasComponent,
     VisualizarProdutosComponent,
     ListarCarrinhoComponent,
+    AdicionarCategoriasComponent,
+    EditarCategoriasComponent,
+    VisualizarCategoriasComponent,
     VendaComponent
 
   ],

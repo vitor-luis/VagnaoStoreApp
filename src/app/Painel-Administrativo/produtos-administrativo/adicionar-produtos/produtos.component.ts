@@ -42,13 +42,14 @@ export class ProdutosComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCategorias()
     var reg = /^(http|https):\/\/(([a-zA-Z0-9$\-_.+!*'(),;:&=]|%[0-9a-fA-F]{2})+@)?(((25[0-5]|2[0-4][0-9]|[0-1][0-9][0-9]|[1-9][0-9]|[0-9])(\.(25[0-5]|2[0-4][0-9]|[0-1][0-9][0-9]|[1-9][0-9]|[0-9])){3})|localhost|([a-zA-Z0-9\-\u00C0-\u017F]+\.)+([a-zA-Z]{2,}))(:[0-9]+)?(\/(([a-zA-Z0-9$\-_.+!*'(),;:@&=]|%[0-9a-fA-F]{2})*(\/([a-zA-Z0-9$\-_.+!*'(),;:@&=]|%[0-9a-fA-F]{2})*)*)?(\?([a-zA-Z0-9$\-_.+!*'(),;:@&=\/?]|%[0-9a-fA-F]{2})*)?(\#([a-zA-Z0-9$\-_.+!*'(),;:@&=\/?]|%[0-9a-fA-F]{2})*)?)?$/
-    //var nome = '[a-zA-Záãâéêíîóôõú\s]+$'
+    
+    
     this.produtoForm = this.formBuilder.group({ 
-    nome: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(100),/*Validators.pattern(nome)*/]],
+    nome: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(100),]],
     descricao: ['', [Validators.required,Validators.maxLength(250)]],
     preco: ['', [Validators.required]],
     quantidadeEstoque: ['', [Validators.required,Validators.maxLength(11)]],      
-    urlImagem: ['', [Validators.required, Validators.pattern(reg),Validators.maxLength(1000)]],
+    urlImagem: ['', [Validators.maxLength(1000)]],
     idCategoria: ['', [Validators.required]]
     })
   }

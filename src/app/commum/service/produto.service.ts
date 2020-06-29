@@ -37,6 +37,10 @@ export class ProdutoService {
   getProdutosPorCategoria(id: number): Observable<HttpResponse<Produto>>{
     return this.http.get<Produto>(`${VagnaoAPI}/produtos/categoria/${id}`, { observe: 'response' })
   }
+  
+
+  
+  
 }
 
 

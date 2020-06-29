@@ -20,6 +20,26 @@ export class CategoriasService {
 
   getCategoria(id:number): Observable<HttpResponse<Categorias>>{
     return this.http.get<Categorias>(`${VagnaoAPI}/categorias/${id}`, { observe: 'response' })
-  
   }
+  
+  updateCategorias(data:Categorias, id ): Observable<HttpResponse<any>> {
+    return this.http.put<any>(`${VagnaoAPI}/categorias/${id}`,data, { observe: 'response' })
+  }
+
+  postCategorias(form: Categorias) : Observable<HttpResponse<any>>{
+    return this.http.post<Categorias>(`${VagnaoAPI}/categorias/`, form, { observe: 'response' })
+  }
+
+  deleteCategorias(categorias: Categorias) {
+    return this.http.delete<Categorias>(`${VagnaoAPI}/categorias/${categorias.id}`, { observe: 'response' })
+  }
+
+  deleteProdutos(id):Observable<HttpResponse<any>> {
+    return this.http.delete<any>(`${VagnaoAPI}/produtos/${id}`, {params: id, observe: 'response' })
+  }
+
+  deleteCategoria(id):Observable<HttpResponse<any>>{
+    return this.http.delete<any>(`${VagnaoAPI}/categorias/${id}`, {params: id, observe: 'response' })
+  }
+
 }

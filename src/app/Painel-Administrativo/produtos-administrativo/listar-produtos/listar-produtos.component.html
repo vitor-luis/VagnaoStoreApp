@@ -11,9 +11,6 @@
                     <div class="col-sm-6 positionButtons">
                         <button type="button" class="btn btn-outline-success btn-sm botao"
                             [routerLink]="['/administrativo/produtos/adicionar']">Adicionar</button>
-
-                            
-
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -28,29 +25,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="pointer hoverRowTable" *ngFor="let produto of produto"  [routerLink]="['/administrativo/produtos/visualizar', produto['id']]">
-                            
+                            <tr class="pointer hoverRowTable" *ngFor="let produto of produto"
+                                [routerLink]="['/administrativo/produtos/visualizar', produto['id']]">
                                 <th scope="row">
                                     <span>{{produto.nome}}</span>
                                 </th>
-                                <th >
+                                <th>
                                     <span>{{produto.descricao}}</span>
                                 </th>
-                                <th>    
+                                <th>
                                     <span>{{produto.quantidadeEstoque}}</span>
                                 </th>
                                 <th>
                                     <span>{{produto.preco | currency:"R$"}}</span>
                                 </th>
-                                
                                 <th (click)="$event.stopPropagation()">
-                                    <button class="btn btn-outline-warning btn-sm" [routerLink]="['/administrativo/produtos/editar', produto['id']]">Editar</button>&nbsp;
-                                    <button class="btn btn-outline-danger btn-sm" (click)="canDelete(produto['nome'], produto['id'])" > Excluir</button>
+                                    <button class="btn btn-outline-warning btn-sm"
+                                        [routerLink]="['/administrativo/produtos/editar', produto['id']]">Editar</button>&nbsp;
+                                    <button class="btn btn-outline-danger btn-sm"
+                                        (click)="canDelete(produto['nome'], produto['id'])"> Excluir</button>
                                 </th>
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

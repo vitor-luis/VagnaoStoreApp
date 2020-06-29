@@ -16,8 +16,9 @@ import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-ven
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
 import { HeaderVendaComponent } from './Site-Vendas/header-venda/header-venda.component';
 import { ListarCarrinhoComponent } from './Site-Vendas/listar-carrinho/listar-carrinho.component';
+import { AdicionarCategoriasComponent } from './Painel-Administrativo/categorias/adicionar-categorias/adicionar-categorias.component';
+import { EditarCategoriasComponent } from './Painel-Administrativo/categorias/editar-categorias/editar-categorias.component';
 import { VendaComponent } from './Site-Vendas/venda/venda.component';
-
 
 export const ROUTES: Routes = [
   {
@@ -27,22 +28,20 @@ export const ROUTES: Routes = [
       { path: 'venda/:id', component: VendaComponent }
     ]
   },
-
   {
     path: 'login', children: [
       { path: '', component: LoginComponent },
       { path: 'registrar', component: RegistrarLoginComponent },
     ]
   },
-
   {
     path: 'administrativo', children: [
       { path: '', component: HomeAdministrativoComponent },
-      {
-        path: 'categorias', children: [
-          { path: '', component: ListarCategoriasComponent }
-        ]
-      },
+      { path: 'categorias', children:[
+        { path: '', component: ListarCategoriasComponent},
+        { path: 'adicionar', component: AdicionarCategoriasComponent},
+        { path: 'editar/:id', component: EditarCategoriasComponent}
+        ]},
       {
         path: 'usuarios', children: [
           { path: '', component: ListarUsuariosComponent },
