@@ -1,49 +1,79 @@
+
 <div class="wrapper">
     <app-header-administrativo></app-header-administrativo>
     <app-sidebar-administrativo></app-sidebar-administrativo>
+
     <div class="content-wrapper marginTopBottomContentContainerAdmin">
         <br>
-        <h5 class="row marginContentContainerAdmin">Adicionar Produtos</h5>
+        <h5 class="row marginContentContainerAdmin" style="display: inline-block;">Adicionar Produtos</h5>
+
+
         <div class="row marginContentContainerAdmin">
-            <div id="login-column" class="cd-md-6">
-                <div id="login-box" class="cd-md-12">
+            <div id="produto-column" class="cd-md-6">
+                <div id="produto-box" class="cd-md-12">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form id="login-form" class="form" [formGroup]="produtoForm" novalidate>
+                            <form id="produto" class="form" [formGroup]="produtoForm" novalidate>
                                 <div class="row">
                                     <div class="form-group col-sm-4">
                                         <label for="nome" class="text-center">Nome: </label><br>
-                                        <input type="text" name="nome" id="nome" class="form-control" formControlName="nome">
+                                        <input type="text" name="nome" id="nome" class="form-control" formControlName="nome" placeholder="Nome do Produto">
+                                        <div *ngIf="!nome.pristine && nome.errors">
+                                        <span *ngIf="nome.errors.required" style="color:red">Nome é obrigatório.</span>
+                                        <span *ngIf="nome.errors.minlength" style="color:red">Nome deve ter no mínimo 3 caracters.</span>
+                                        <span *ngIf="nome.errors.maxlength" style="color:red">Nome deve ter no máximo 100 caracters.</span>
+                                        </div>
                                     </div>
-                               
 
                                     <div class="form-group col-sm-4">
                                         <label for="preco" class="text-center">Preço: </label><br>
-                                        <input type="text" name="preco" id="preco" class="form-control" formControlName="preco">
+                                        <input currencyMask name="preco" maxlength="9" id="preco" class="form-control" formControlName="preco" [options]="{ align:'left' , prefix: 'R$ ', thousands: '.', decimal: ',' }" >
+                                        
                                     </div>
 
      
                                     <div class="form-group col-sm-4">
                                         <label for="descricao" class="text-center">Descrição: </label><br>
-                                        <textarea type="text" name="descricao" id="descricao" class="form-control" formControlName="descricao" rows="3" ></textarea>
+                                        <input type="text" name="descricao" id="descricao" class="form-control" formControlName="descricao" placeholder="Descrição do Produto">
+                                        <div *ngIf="!descricao.pristine && descricao.errors">
+                                            <span *ngIf="descricao.errors.maxlength" style="color:red">Descrição deve ter no máximo 250 caracters.</span>
+                                        
+                                        </div>
+                                        
                                     </div>
 
                                     <div class="form-group col-sm-4">
                                         <label for="quantidadeEstoque" class="text-center">Estoque: </label><br>
-                                        <input type="text" name="quantidadeEstoque" id="quantidadeEstoque" class="form-control" formControlName="quantidadeEstoque">
+                                        <input type="text" name="quantidadeEstoque" id="quantidadeEstoque" class="form-control" formControlName="quantidadeEstoque" mask="0*" placeholder="Quantidades de Produtos no Estoque">
+                                        <div *ngIf="!quantidadeEstoque.pristine && quantidadeEstoque.errors">
+                                            <span *ngIf="quantidadeEstoque.errors.required" style="color:red">Estoque é obrigatório.</span>
+                                            <span *ngIf="quantidadeEstoque.errors.maxlength" style="color:red">Estoque inválido.</span>
+                                            
+                                        </div>
                                     </div>
                                     
                                     <div class="form-group col-sm-4">
                                         <label for="urlImagem" class="text-center">URL: </label><br>
-                                        <input type="text" name="urlImagem" id="urlImagem" class="form-control" formControlName="urlImagem">
+                                        <input type="url" name="urlImagem" id="urlImagem" class="form-control" formControlName="urlImagem" placeholder="URL Imagem">
+                                        <div *ngIf="!urlImagem.pristine && urlImagem.errors">
+                                            <span *ngIf="urlImagem.errors.required" style="color:red">URL é obrigatório.</span>
+                                            <span *ngIf="urlImagem.invalid && !urlImagem.errors.required || urlImagem.errors.maxlength" style="color:red">URL inválido.</span>
+                                            
+
+                                        </div>
                                     </div>
+
+
                                     
                                     <div class="form-group col-sm-4">
                                       <label for="idCategoria" class="text-center">Categoria: </label><br>
-                                      <select  name="idCategoria" id="idCategoria" class="form-control" formControlName="idCategoria">
+                                      <select  name="idCategoria" id="idCategoria" class="form-control" formControlName="idCategoria" >
                                         <option disabled></option>
                                         <option *ngFor="let categoria of categorias" value={{categoria.id}}>{{categoria.nome}}</option>
                                     </select>
+                                    <div *ngIf="!idCategoria.pristine && idCategoria.errors">
+                                        <span *ngIf="idCategoria.touched && !idCategoria.valid" style="color:red">Categoria é obrigatória.</span>
+                                    </div>
                                   </div>                                    
                                 </div>
                             </form>

@@ -1,0 +1,79 @@
+<script src="js/bootstrap.js"></script>
+<div class="header">
+
+    <div class="container">
+
+        <div class="logo">
+            <h1><a [routerLink]="['/']">Vagnao Store<span>A Melhor Loja Virtual De Bilhar</span></a></h1>
+        </div>
+        <div class="head-t" *ngIf="idLogin == null">
+            <ul class="li">
+                <li><a routerLink="/login"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
+                <li><a routerLink="/login/registrar"><i class="fa fa-arrow-right"
+                            aria-hidden="true"></i>Cadastrar-se</a></li>
+            </ul>
+        </div>
+        <div class="head-t" *ngIf="idLogin != null">
+            <ul class="li">
+                <h4>Bem Vindo {{cliente.nome}}</h4>
+            </ul>
+        </div>
+    </div>
+    <style>
+        .clearfix {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</div>
+
+<div class="alinharCentro">
+    <h3>Itens do Carrinho</h3>
+</div>
+<br>
+<br>
+<div class="marginTopBottomContentContainerAdmin">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Total</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produto of itensVenda" class="alinhaInicio">
+                <th scope="row">
+                    <span>{{produto.nome}}</span>
+                </th>
+                <th scope="row">
+                    <i disabled *ngIf="produto.quantidade < 2" class="fas fa-minus teste"></i>
+                    <i *ngIf="produto.quantidade > 1" class="fas fa-minus" (click)="retirarProduto(produto)"></i>&nbsp;&nbsp;
+                    <span>{{produto.quantidade}}</span>&nbsp;&nbsp;
+                    <i class="fas fa-plus" (click)="adicionarProduto(produto)"></i>
+                </th>
+                <th scope="row">
+                    <span>{{produto.preco}}</span>
+                </th>
+                <th scope="row">
+                    <span>{{produto.total}}</span>
+                </th>
+                <th scope="row">
+                    <button class="btn btn-outline-danger btn-sm"> Excluir</button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <div class="positionButtons">
+        <h5>
+            Total: {{totalCompra}}
+        </h5>
+    </div>
+    <div class="positionButtons compra">
+        <button type="button" class="btn btn-outline-success btn-sm botao">Efetuar Compra</button>
+    </div>
+</div>

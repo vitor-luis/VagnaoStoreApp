@@ -6,21 +6,24 @@
         <div class="logo">
             <h1><a [routerLink]="['/']">Vagnao Store<span>A Melhor Loja Virtual De Bilhar</span></a></h1>
         </div>
-        <div class="head-t">
+        <div class="head-t" *ngIf="idLogin == null">
             <ul class="li">
-
                 <li><a routerLink="/login"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
                 <li><a routerLink="/login/registrar"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cadastrar-se</a></li>
-
             </ul>
-
+        </div>
+        <div class="head-t" *ngIf="idLogin != null">
+            <div class="row">
+                <div class="col-sm"></div>
+                <div class="col-sm"><h4>Bem Vindo {{cliente.nome}}</h4></div>
+                <div class="col-sm alinharFim"><button type="button" class="btn btn-light" (click)="logout()">Sair</button></div>
+            </div>
         </div>
 
         <input type="checkbox" id="bt_menu" />
         <label for="bt_menu">&#9776;</label>
         <div class="cart">
-
-            <span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
+            <span [routerLink]="['/carrinho', vendaId]" class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge" >{{quantidadeItens}}</span></span>
         </div>
         <nav class="menu">
             <ul >
@@ -57,7 +60,7 @@
                         <h6>R$ {{produto.preco}}</h6>
                     </div>
                     <div class="add add-2">
-                        <button class="btn btn-danger my-cart-btn my-cart-b" >Adicionar ao Carrinho</button>
+                        <button class="btn btn-danger my-cart-btn my-cart-b" (click)="adicionarCarrinho(produto)">Adicionar ao Carrinho</button>
                     </div>
                 </div>
             </div>

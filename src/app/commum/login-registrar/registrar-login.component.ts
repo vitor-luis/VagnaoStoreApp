@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClientesService } from '../service/clientes.service';
 import { ValidateBrService } from 'angular-validate-br';
+import { variable } from '@angular/compiler/src/output/output_ast';
+import { variaveisGlobais } from '../variaveis-globais';
 
 @Component({
   selector: 'app-registrar-login',
@@ -38,7 +40,7 @@ export class RegistrarLoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email:  ['', [Validators.required, Validators.email]],
       senha:  ['', [Validators.required]],
-      isAdmin:  [1, [Validators.required]]
+      isAdmin:  [0, [Validators.required]]
     })
     this.clienteForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
@@ -63,7 +65,7 @@ export class RegistrarLoginComponent implements OnInit {
   postCliente(){
     this.httpReq = this.serviceCliente.postCliente(this.clienteForm.value).subscribe(res => {
       this.clienteForm.reset()
-      this.router.navigate(['/'])
+      this.router.navigate(['/login'])
       this.showToastrSuccess()
     }, err =>{
       this.loginForm.reset()

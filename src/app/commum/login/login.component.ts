@@ -5,6 +5,9 @@ import { LoginService } from '../service/login.service';
 import { Login } from '../model/login.model';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
+import { HeaderVendaComponent } from 'src/app/Site-Vendas/header-venda/header-venda.component';
+import { AppComponent } from 'src/app/app.component';
+import { variaveisGlobais } from '../variaveis-globais';
 
 @Component({
   selector: 'app-login',
@@ -43,10 +46,18 @@ export class LoginComponent implements OnInit {
         if (response.isAdmin == 1) {
           this.router.navigate(['administrativo'])
         } else {
-          this.router.navigate(['/'])
+          this.httpReq = this.service.getClientePorIdLogin(response.id).pipe().subscribe(res => {
+            variaveisGlobais.idlogin = response.id
+            variaveisGlobais.cliente = res.body['data']
+            console.log(res.body['data'])
+            this.router.navigate([''])
+          }, err => {
+            this.statusResponse = err.status
+            this.messageApi = 'Falha na autenticação!'
+          })
         }
       }
-    }, err =>{
+    }, err => {
       this.statusResponse = err.status
       this.messageApi = 'Falha na autenticação!'
     })

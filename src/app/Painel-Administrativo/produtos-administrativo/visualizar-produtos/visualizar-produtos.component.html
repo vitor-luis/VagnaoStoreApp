@@ -26,7 +26,7 @@
                     <div class="col-sm-4">
                         <label class="form-control-label">Preço</label>
                         <div>
-                            {{produto.preco}}
+                            {{produto.preco | currency:"R$"}}
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -47,17 +47,18 @@
                             </div>
 
                             <div class="col-sm-4">
-                            <label class="form-control-label">URL</label>
+                            <label class="form-control-label">Categoria</label>
                             <div>
 
-                                {{produto.urlImagem}}
+                                {{categorias.nome}}  
+                                
                             </div>
                         </div>
                         
                         <div class="col-sm-4">
-                            <label class="form-control-label">Categoria</label>
+                            <label class="form-control-label">URL</label>
                             <div>
-                                {{categorias.nome}}  
+                                {{produto.urlImagem}}
                             </div>
                         </div>
                     </div>
