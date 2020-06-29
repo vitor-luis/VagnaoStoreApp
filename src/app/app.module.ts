@@ -31,7 +31,8 @@ import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-ad
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
 import { ListarCarrinhoComponent } from './Site-Vendas/listar-carrinho/listar-carrinho.component';
-
+import { NgxCurrencyModule } from "ngx-currency";
+import { AngularValidateBrLibModule } from 'angular-validate-br';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 @NgModule({
@@ -68,6 +69,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgxCurrencyModule,
+    AngularValidateBrLibModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(),
     NgxMaskModule.forRoot(options),

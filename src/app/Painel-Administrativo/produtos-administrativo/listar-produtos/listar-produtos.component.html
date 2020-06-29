@@ -20,7 +20,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Estoque</th>
@@ -30,11 +29,8 @@
                         </thead>
                         <tbody>
                             <tr class="pointer hoverRowTable" *ngFor="let produto of produto"  [routerLink]="['/administrativo/produtos/visualizar', produto['id']]">
+                            
                                 <th scope="row">
-                                    <span>{{produto.id}}</span>
-                                </th>
-
-                                <th>
                                     <span>{{produto.nome}}</span>
                                 </th>
                                 <th >

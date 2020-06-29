@@ -63,8 +63,6 @@ getCategoria(id: number){
       this.statusResponse =err.status
       this.messageApi= err.error['message']
   })
-  
-
 }
 canDelete(nome: string, id:number) {
   const initialState = { message: `Deseja excluir o produto ${nome} ?` }
