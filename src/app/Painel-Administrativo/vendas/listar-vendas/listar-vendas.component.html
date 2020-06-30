@@ -18,18 +18,20 @@
                         <thead>
                             <tr>
                                 
+                                
+                                <th>Data</th>
                                 <th>Valor Total</th>
-                                <th>Data da Venda</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let venda of venda">
+                            <tr class="pointer hoverRowTable" *ngFor="let venda of venda" [routerLink]="['/administrativo/venda/visualizar', venda['id']]">
                                 <th scope="row">
-                                    <span>{{venda.total | currency:"R$"}}</span>
-                                </th>
-                                <th>
                                     <span>{{venda.data | date: 'dd/MM/yyyy'}}</span>
                                 </th>
+                                <th>
+                                    <span>{{venda.total | currency:"R$"}}</span>
+                                </th>
+                                
                             </tr>
                         </tbody>
                     </table>

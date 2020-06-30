@@ -28,8 +28,8 @@ export class AdicionarCategoriasComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoriasForm = this.formBuilder.group({
-      nome:  ['', [Validators.required]],
-      descricao:  ['', [Validators.required]]
+      nome:  ['', [Validators.required,Validators.maxLength(250)]],
+      descricao: ['', [Validators.required,Validators.maxLength(300)]],
     })
   }
 
@@ -59,4 +59,6 @@ export class AdicionarCategoriasComponent implements OnInit {
     })
   }
 
+  get nome() { return this.categoriasForm.get('nome') }
+  get descricao() { return this.categoriasForm.get('descricao') }  
 }

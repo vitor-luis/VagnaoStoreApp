@@ -57,10 +57,11 @@ export class EditarUsuarioComponent implements OnInit {
       id: [''],
       nome: ['', [Validators.required]],
       cpf: ['', [Validators.required, this._validateBrService.cpf]],
-      dataNascimento: ['', [Validators.required]],
+      dataNascimento:  [''],
       idLogin: [0, [Validators.required]]
     })
   }
+
 
   getUsuarioByEmail(email: string) {
     this.httpReq = this.serviceCliente.getCliente(email).subscribe(response => {
@@ -127,10 +128,9 @@ export class EditarUsuarioComponent implements OnInit {
       positionClass: 'toast-bottom-center'
     })
   }
-
-  get email() { return this.loginForm.get('email') }
+get email() { return this.loginForm.get('email') }
   get senha() { return this.loginForm.get('senha') }
-  get nome() { return this.loginForm.get('nome') }
-  get cpf() { return this.loginForm.get('cpf') }
-  get dataNascimento() { return this.loginForm.get('dataNascimento') }
+  get nome() { return this.clienteForm.get('nome') }
+  get cpf() { return this.clienteForm.get('cpf') }
+  get dataNascimento() { return this.clienteForm.get('dataNascimento') }
 }

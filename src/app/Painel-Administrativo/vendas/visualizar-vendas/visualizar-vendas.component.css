@@ -1,0 +1,13 @@
+.marginTopBottomContentContainerAdmin{
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: white;
+}
+
+.positionTitle {
+    text-align: start;
+}
+
+.positionButtons {
+    text-align: end;
+}

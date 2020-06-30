@@ -26,7 +26,7 @@
 
                                     <div class="form-group col-sm-4">
                                         <label for="preco" class="text-center">Preço: </label><br>
-                                        <input currencyMask  name="preco" maxlength="9" id="preco" class="form-control" formControlName="preco" [options]="{ align:'left' , prefix: 'R$ ', thousands: '.', decimal: ',' }">
+                                        <input currencyMask  name="preco" maxlength="7" id="preco" class="form-control" formControlName="preco" [options]="{ align:'left' , prefix: 'R$ ', thousands: '.', decimal: ',' }">
                                     </div>
 
 
@@ -56,7 +56,6 @@
                                    
                                         <div *ngIf="!urlImagem.pristine && urlImagem.errors">
                                             <span *ngIf="urlImagem.errors.required" style="color:red">URL é obrigatório.</span>
-                                            <span *ngIf="urlImagem.invalid && !urlImagem.errors.required || urlImagem.errors.maxlength" style="color:red">URL inválido.</span>
                                         </div>
                                     </div>
 

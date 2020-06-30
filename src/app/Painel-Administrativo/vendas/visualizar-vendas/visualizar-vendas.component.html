@@ -1,0 +1,45 @@
+<div class="wrapper">
+    <app-header-administrativo></app-header-administrativo>
+    <app-sidebar-administrativo></app-sidebar-administrativo>
+    <div class="content-wrapper marginTopBottomContentContainerAdmin">
+        <br>
+        <div class="marginTopBottomContentContainerAdmin">
+            <div class="row">
+                <div class="col-sm-8 positionTitle">
+                    <h5>Visualizar Venda</h5>
+                </div>
+            </div>
+            <br>
+            <div>
+                <div class="row">
+                    
+                    <div class="col-sm-4">
+                        <label class="form-control-label">Data</label>
+                        <div>
+                            {{venda.data | date: 'dd/MM/yyyy'}}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="form-control-label">Valor Total</label>
+                        <div>
+                            {{venda.total | currency:"R$" }} 
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <label class="form-control-label">Efetuada</label>
+                        <div>
+                            <span>Sim</span>
+                        </div>
+                    </div>
+                    </div>
+                    <br>
+                    
+                
+            </div>
+        </div>
+    </div>
+    <app-control-sidebar-administrativo></app-control-sidebar-administrativo>
+    <app-footer-administrativo></app-footer-administrativo>
+</div>

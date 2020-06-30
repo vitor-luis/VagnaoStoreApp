@@ -37,18 +37,21 @@ export class RegistrarLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email:  ['', [Validators.required, Validators.email]],
-      senha:  ['', [Validators.required]],
-      isAdmin:  [0, [Validators.required]]
-    })
     this.clienteForm = this.formBuilder.group({
-      nome: ['', [Validators.required]],
+      nome: ['', [Validators.required,Validators.maxLength(250)]],
       cpf: ['', [Validators.required, this._validateBrService.cpf]],
-      dataNascimento:  ['', [Validators.required]],
+      dataNascimento:  [''],
       idLogin:  [0, [Validators.required]]
+    }),
+    this.loginForm = this.formBuilder.group({
+      email:  ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+      senha:  ['', [Validators.required, Validators.minLength(6),Validators.maxLength(100)]],
+      isAdmin:  [0, [Validators.required]],
     })
   }
+
+ 
+
 
   onSubmit() {
     this.httpReq = this.service.postLogin(this.loginForm.value).subscribe(res =>{
@@ -96,7 +99,7 @@ export class RegistrarLoginComponent implements OnInit {
 
   get email() { return this.loginForm.get('email') }
   get senha() { return this.loginForm.get('senha') }
-  get nome() { return this.loginForm.get('nome') }
-  get cpf() { return this.loginForm.get('cpf') }
-  get dataNascimento() { return this.loginForm.get('dataNascimento') }
+  get nome() { return this.clienteForm.get('nome') }
+  get cpf() { return this.clienteForm.get('cpf') }
+  get dataNascimento() { return this.clienteForm.get('dataNascimento') }
 }
