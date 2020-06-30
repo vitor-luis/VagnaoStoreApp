@@ -16,6 +16,10 @@ import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-ven
 import { HeaderVendaComponent } from './Site-Vendas/header-venda/header-venda.component';
 import { ListarCarrinhoComponent } from './Site-Vendas/listar-carrinho/listar-carrinho.component';
 import { VendaComponent } from './Site-Vendas/venda/venda.component';
+import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
+import { AdicionarCategoriasComponent } from './Painel-Administrativo/categorias/adicionar-categorias/adicionar-categorias.component';
+import { VisualizarCategoriasComponent } from './Painel-Administrativo/categorias/visualizar-categorias/visualizar-categorias.component';
+import { EditarCategoriasComponent } from './Painel-Administrativo/categorias/editar-categorias/editar-categorias.component';
 
 export const ROUTES: Routes = [
   {
@@ -34,7 +38,13 @@ export const ROUTES: Routes = [
   {
     path: 'administrativo', children: [
       { path: '', component: HomeAdministrativoComponent },
-      { path: 'categorias', children:[]},
+      
+      { path: 'categorias', children:[
+        { path: '', component: ListarCategoriasComponent},
+        { path: 'adicionar', component: AdicionarCategoriasComponent},
+        { path: 'visualizar/:id', component: VisualizarCategoriasComponent},
+        { path: 'editar/:id', component: EditarCategoriasComponent}
+        ]},
       {
         path: 'usuarios', children: [
           { path: '', component: ListarUsuariosComponent },
