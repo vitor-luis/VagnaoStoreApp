@@ -16,6 +16,11 @@ export class VendasService {
     return this.http.get<Vendas[]>(`${VagnaoAPI}/venda/`, { observe: 'response' })
   }
 
+  getVenda(id:number): Observable<HttpResponse<Vendas>>{
+    return this.http.get<Vendas>(`${VagnaoAPI}/venda/${id}`, { observe: 'response' })
+  
+  }
+
   postVenda(form): Observable<HttpResponse<any>>{
     return this.http.post<Vendas>(`${VagnaoAPI}/venda/`, form, { observe: 'response' })
   }

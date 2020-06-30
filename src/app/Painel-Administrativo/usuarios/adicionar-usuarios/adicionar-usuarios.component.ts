@@ -54,6 +54,8 @@ export class AdicionarUsuariosComponent implements OnInit {
   }
 
   onSubmit() {
+ 
+
     this.httpReq = this.service.postLogin(this.loginForm.value).subscribe(res =>{
       this.loginForm.reset()
       this.clienteForm.value.idLogin = res.body['data']

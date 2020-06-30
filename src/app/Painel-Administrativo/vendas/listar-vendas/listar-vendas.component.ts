@@ -28,12 +28,12 @@ export class ListarVendasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllProdutos()
+    this.getAllVendas()
   }
 
 
 
-  getAllProdutos(){
+  getAllVendas(){
     this.httpReq = this.service.getAllVendas().subscribe(response =>{
       this.messageApi = response.body['message']
       this.venda = response.body['data']

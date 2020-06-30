@@ -29,6 +29,7 @@ import { ListarProdutosComponent } from './Painel-Administrativo/produtos-admini
 import { EditarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/editar-produtos/editar-produtos.component';
 import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/visualizar-produtos/visualizar-produtos.component';
 import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
+import { VisualizarVendasComponent } from './Painel-Administrativo/vendas/visualizar-vendas/visualizar-vendas.component';
 import { ListarCarrinhoComponent } from './Site-Vendas/listar-carrinho/listar-carrinho.component';
 import { NgxCurrencyModule } from "ngx-currency";
 import { AngularValidateBrLibModule } from 'angular-validate-br';
@@ -37,6 +38,7 @@ import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/li
 import { EditarCategoriasComponent } from './Painel-Administrativo/categorias/editar-categorias/editar-categorias.component';
 import { VisualizarCategoriasComponent } from './Painel-Administrativo/categorias/visualizar-categorias/visualizar-categorias.component';
 import { AdicionarCategoriasComponent } from './Painel-Administrativo/categorias/adicionar-categorias/adicionar-categorias.component';
+
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 @NgModule({
@@ -66,8 +68,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ListarCategoriasComponent,
     EditarCategoriasComponent,
     VisualizarCategoriasComponent,
-    AdicionarCategoriasComponent
-
+    AdicionarCategoriasComponent,
+    VisualizarVendasComponent
   ],
   imports: [
     BrowserModule,

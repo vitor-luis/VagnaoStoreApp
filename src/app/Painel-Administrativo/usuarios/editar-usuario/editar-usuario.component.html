@@ -15,18 +15,30 @@
                                         <label for="nome" class="text-center">Nome</label><br>
                                         <input ValpropName type="text" name="nome" id="nome" class="form-control"
                                             formControlName="nome">
+                                        <div *ngIf="!nome.pristine && nome.errors">
+                                            <span *ngIf="nome.errors.required" style="color:red">Nome é obrigatório.</span>
+                                            <span *ngIf="nome.errors.maxlength" style="color:red">Nome deve ter no máximo 250 caracters.</span>
+                                        </div> 
+
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label for="cpf" class="text-center">CPF</label><br>
                                         <input type="text" ValCpf name="cpf" class="form-control" placeholder="CPF"
                                             formControlName="cpf" mask="000.000.000-00">
+                                        
+                                        <div *ngIf="!cpf.pristine && cpf.errors">
+                                            <span *ngIf="cpf.errors.required" style="color:red">CPF é obrigatório.</span>
+                                            <span *ngIf="cpf.invalid && !cpf.errors.required" style="color:red">CPF inválido.</span>
+                                        </div>     
                                     </div>
                                     <div class="form-group col-sm-3">
 
-                                        <label for="dataNascimento" class="text-center">Data
-                                            Nascimento</label><br>
-                                        <input type="date" name="dataNascimento" id="dataNascimento"
-                                            class="form-control" formControlName="dataNascimento">
+                                        <label for="dataNascimento" class="text-center">Data Nascimento</label><br>
+                                        <input name="dataNascimento" id="dataNascimento" class="form-control"
+                                            formControlName="dataNascimento" mask='0000/00/00'>
+                                        <div *ngIf="!dataNascimento.pristine && dataNascimento.errors">
+                                            <span *ngIf="dataNascimento.invalid" style="color:red">Data inválida.</span>
+                                        </div>  
                                     </div>
                                 </div>
                             </form>
@@ -38,18 +50,32 @@
                                         <label for="email" class="text-center">Email</label><br>
                                         <input type="email" name="usuario" id="email" class="form-control"
                                             formControlName="email" maxlength="100">
+
+
+                                        <div *ngIf="!email.pristine && email.errors">
+                                            <span *ngIf="email.errors.required" style="color:red">Email é obrigatório.</span>
+                                            <span *ngIf="email.invalid && !email.errors.required" style="color:red">Email inválido.</span>
+                                            <span *ngIf="email.errors.maxlength" style="color:red">Email deve ter no máximo 100 caracteres.</span>
+                                        </div>     
+
                                     </div>
                                     <div class="form-group col-sm-6">
                                         <label for="senha" class="text-center">Senha </label><br>
                                         <input type="password" name="senha" id="senha" class="form-control"
                                             formControlName="senha">
+                                        <div *ngIf="!senha.pristine && senha.errors">
+                                            <span *ngIf="senha.errors.required" style="color:red">Senha é obrigatória.</span>
+                                            <span *ngIf="senha.errors.maxlength" style="color:red">Senha deve ter no máximo 100 caracteres.</span>
+                                            <span *ngIf="senha.errors.minlength" style="color:red">Senha deve ter no mínimo 6 caracteres.</span>
+                                        </div>     
+                                   
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="form-group positionButtons">
-                        <button (click)="onSubmit()" class="btn btn-success">Salvar</button>
+                        <button (click)="onSubmit()" class="btn btn-success" [disabled]='!loginForm.valid || !clienteForm.valid'>Salvar</button>
                     </div>
                 </div>
             </div>

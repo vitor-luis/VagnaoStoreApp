@@ -12,14 +12,16 @@ import { ListarProdutosComponent } from './Painel-Administrativo/produtos-admini
 import { ProdutosComponent } from './Painel-Administrativo/produtos-administrativo/adicionar-produtos/produtos.component';
 import { EditarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/editar-produtos/editar-produtos.component';
 import { VisualizarProdutosComponent } from './Painel-Administrativo/produtos-administrativo/visualizar-produtos/visualizar-produtos.component';
-import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
 import { HeaderVendaComponent } from './Site-Vendas/header-venda/header-venda.component';
 import { ListarCarrinhoComponent } from './Site-Vendas/listar-carrinho/listar-carrinho.component';
 import { VendaComponent } from './Site-Vendas/venda/venda.component';
+import { ListarVendasComponent } from './Painel-Administrativo/vendas/listar-vendas/listar-vendas.component';
+import { VisualizarVendasComponent } from './Painel-Administrativo/vendas/visualizar-vendas/visualizar-vendas.component';
 import { ListarCategoriasComponent } from './Painel-Administrativo/categorias/listar-categorias/listar-categorias.component';
 import { AdicionarCategoriasComponent } from './Painel-Administrativo/categorias/adicionar-categorias/adicionar-categorias.component';
 import { VisualizarCategoriasComponent } from './Painel-Administrativo/categorias/visualizar-categorias/visualizar-categorias.component';
 import { EditarCategoriasComponent } from './Painel-Administrativo/categorias/editar-categorias/editar-categorias.component';
+
 
 export const ROUTES: Routes = [
   {
@@ -67,6 +69,7 @@ export const ROUTES: Routes = [
       {
         path: 'venda', children: [
           { path: '', component: ListarVendasComponent },
+          { path: 'visualizar/:id', component: VisualizarVendasComponent },
         ]
       }
     ]

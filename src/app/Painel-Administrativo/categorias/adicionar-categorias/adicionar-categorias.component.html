@@ -12,25 +12,33 @@
                             <form id="categorias-form" class="form" [formGroup]="categoriasForm" novalidate>
                                 <div class="row">
                                     
-                                    <div class="form-group col-sm-4">
+                                    <div class="form-group col-sm-6">
                                         <label for="nome" class="text-center">Nome:</label><br>
                                         <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome"
                                             formControlName="nome">
+                                        <div *ngIf="!nome.pristine && nome.errors">
+                                            <span *ngIf="nome.errors.required" style="color:red">Nome é obrigatório.</span>
+                                            <span *ngIf="nome.errors.maxlength" style="color:red">Nome deve ter no máximo 250 caracteres.</span>
+                                        </div>     
                                     </div>
 
-                                   
-
-                                    <div class="form-group col-sm-4">
+                                    <div class="form-group col-sm-6">
                                         <label for="descricao" class="text-center">Descrição</label><br>
                                         <input type="text" name="descricao" class="form-control" placeholder="Descrição"
                                             formControlName="descricao">
+
+                                            <div *ngIf="!descricao.pristine && descricao.errors">
+                                                <span *ngIf="descricao.errors.required" style="color:red">Descricao é obrigatória.</span>
+                                                <span *ngIf="descricao.errors.maxlength" style="color:red">Descricao deve ter no máximo 300 caracteres.</span>
+                                            </div> 
+
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="form-group positionButtons">
-                        <button (click)="onSubmit()" class="btn btn-success">Salvar</button>
+                        <button (click)="onSubmit()" class="btn btn-success" [disabled]='!categoriasForm.valid'>Salvar</button>
                     </div>
                 </div>
             </div>

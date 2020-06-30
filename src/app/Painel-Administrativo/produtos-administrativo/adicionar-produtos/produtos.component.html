@@ -57,7 +57,6 @@
                                         <input type="url" name="urlImagem" id="urlImagem" class="form-control" formControlName="urlImagem" placeholder="URL Imagem">
                                         <div *ngIf="!urlImagem.pristine && urlImagem.errors">
                                             <span *ngIf="urlImagem.errors.required" style="color:red">URL é obrigatório.</span>
-                                            <span *ngIf="urlImagem.invalid && !urlImagem.errors.required || urlImagem.errors.maxlength" style="color:red">URL inválido.</span>
                                             
 
                                         </div>
