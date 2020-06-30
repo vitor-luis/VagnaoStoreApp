@@ -27,11 +27,89 @@
     </style>
 </div>
 <br><br>
-<div class="marginTopBottomContentContainerAdmin">
-    <div class="alinharInicio">
-        <h5>Selecione o endereço para entrega</h5>
+<div>
+    <div class="marginTopBottomContentContainerAdmin" *ngIf="enderecos != null">
+        <div class="alinharInicio">
+            <h5>Selecione o endereço para entrega</h5>
+        </div>
+        <br>
+        <form id="endereco-form" class="form" [formGroup]="vendaForm" novalidate>
+            <div class="row">
+                <div class="col-sm-1"> Selecione </div>
+                <div class="col-sm-2"> Rua </div>
+                <div class="col-sm-2"> Número </div>
+                <div class="col-sm-2"> Bairro </div>
+                <div class="col-sm-2"> Cidade </div>
+                <div class="col-sm-2"> CEP </div>
+            </div>
+            <div *ngFor="let endereco of enderecos" class="row">
+                <div class="col-sm-1"><input  type="radio" name="idEnderecoVenda" value="{{endereco.id}}" formControlName="idEnderecoVenda" ></div>
+                <div class="col-sm-2"> {{endereco.rua}} </div>
+                <div class="col-sm-2"> {{endereco.numero}} </div>
+                <div class="col-sm-2"> {{endereco.bairro}} </div>
+                <div class="col-sm-2"> {{endereco.cidade}} </div>
+                <div class="col-sm-2"> {{endereco.cep}} </div>
+            </div>
+            <br><br>
+            <div class="form-group positionButtons">
+                <h4>Valor total da compra R$ {{venda.total}}</h4> 
+            </div>
+            <div class="form-group positionButtons">
+                <button (click)="efetuarVenda()" class="btn btn-success">Efetuar a compra</button>
+            </div>
+        </form>
     </div>
-    <div *ngFor="let endereco of enderecos">
-        <div> {{endereco.rua}} </div>
+    <div class="marginTopBottomContentContainerAdmin" *ngIf="enderecos == null">
+        <div class="alinharInicio">
+            <h5>Cadastrar endereço para entrega</h5>
+        </div>
+        <br>
+        <div class="col-sm-12">
+            <form id="endereco-form" class="form" [formGroup]="enderecoForm" novalidate>
+                <div class="row">
+                    <div class="form-group col-sm-3">
+                        <label for="rua" class="text-center">Rua</label><br>
+                        <input type="rua" name="usuario" id="rua" class="form-control" placeholder="Rua"
+                            formControlName="rua" maxlength="400">
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <label for="numero" class="text-center">Número</label><br>
+                        <input type="numero" name="usuario" id="numero" class="form-control" placeholder="Número"
+                            formControlName="numero" maxlength="5">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="bairro" class="text-center">Bairro</label><br>
+                        <input type="bairro" name="usuario" id="bairro" class="form-control" placeholder="Bairro"
+                            formControlName="bairro" maxlength="400">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="complemento" class="text-center">Complemento</label><br>
+                        <input type="complemento" name="usuario" id="complemento" class="form-control"
+                            placeholder="Complemento" formControlName="complemento" maxlength="1000">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-3">
+                        <label for="cidade" class="text-center">Cidade</label><br>
+                        <input type="cidade" name="usuario" id="cidade" class="form-control" placeholder="Cidade"
+                            formControlName="cidade" maxlength="50">
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <label for="estado" class="text-center">Estado</label><br>
+                        <input type="estado" name="usuario" id="estado" class="form-control" placeholder="Estado"
+                            formControlName="estado" maxlength="2">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="cep" class="text-center">CEP</label><br>
+                        <input type="cep" name="usuario" id="cep" class="form-control" placeholder="CEP"
+                            formControlName="cep">
+                    </div>
+                </div>
+                <div class="form-group positionButtons">
+                    <button (click)="onSubmit()" class="btn btn-success">Salvar</button>
+                </div>
+            </form>
+        </div>
     </div>
+
 </div>

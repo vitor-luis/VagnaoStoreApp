@@ -40,7 +40,7 @@ export class ListarCarrinhoComponent implements OnInit {
 
     if (variaveisGlobais.idlogin != null) {
       this.idLogin = variaveisGlobais.idlogin
-      this.cliente = variaveisGlobais.cliente
+      this.cliente = variaveisGlobais.cliente[0]
     }
   }
 

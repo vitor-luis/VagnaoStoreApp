@@ -2,5 +2,6 @@ export interface Vendas {
     id: number,
     total: number,
     data: Date,
-    efetuada: number
+    efetuada: number,
+    idEnderecoVenda: number
 }

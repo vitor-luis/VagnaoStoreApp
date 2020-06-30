@@ -18,7 +18,6 @@ export class VendasService {
 
   getVenda(id:number): Observable<HttpResponse<Vendas>>{
     return this.http.get<Vendas>(`${VagnaoAPI}/venda/${id}`, { observe: 'response' })
-  
   }
 
   postVenda(form): Observable<HttpResponse<any>>{
@@ -27,6 +26,12 @@ export class VendasService {
 
   deleteVenda(id): Observable<HttpResponse<any>>{
     return this.http.delete<Vendas>(`${VagnaoAPI}/venda/${id}`, { observe: 'response' })
+  }
+
+  updateVenda(id:number, form): Observable<HttpResponse<any>>{
+    console.log(id)
+    console.log(form)
+    return this.http.put<Vendas>(`${VagnaoAPI}/venda/${id}`, form, { observe: 'response' })
   }
   
 }

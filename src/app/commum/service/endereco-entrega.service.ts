@@ -16,4 +16,10 @@ export class EnderecoEntregaService {
   getEnderecoEntregaPorCliente(id: number) : Observable<HttpResponse<any>>{
     return this.http.get<EnderecoEntrega[]>(`${VagnaoAPI}/enderecoEntregas/${id}`, { observe: 'response' })
   }
+
+  postEnderecoEntrega(form: EnderecoEntrega): Observable<HttpResponse<any>> {
+    console.log(form)
+    return this.http.post<EnderecoEntrega>(`${VagnaoAPI}/enderecoEntregas/`, form, { observe: 'response' })
+  }
+
 }
