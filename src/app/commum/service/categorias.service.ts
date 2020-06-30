@@ -30,16 +30,7 @@ export class CategoriasService {
     return this.http.post<Categorias>(`${VagnaoAPI}/categorias/`, form, { observe: 'response' })
   }
 
-  deleteCategorias(categorias: Categorias) {
-    return this.http.delete<Categorias>(`${VagnaoAPI}/categorias/${categorias.id}`, { observe: 'response' })
-  }
-
-  deleteProdutos(id):Observable<HttpResponse<any>> {
-    return this.http.delete<any>(`${VagnaoAPI}/produtos/${id}`, {params: id, observe: 'response' })
-  }
-
-  deleteCategoria(id):Observable<HttpResponse<any>>{
+  deleteCategorias(id):Observable<HttpResponse<any>>{
     return this.http.delete<any>(`${VagnaoAPI}/categorias/${id}`, {params: id, observe: 'response' })
   }
-
 }
