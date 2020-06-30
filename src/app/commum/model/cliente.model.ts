@@ -1,5 +1,3 @@
-import { Login } from './login.model';
-
 export interface Cliente {
     id: number,
     nome: string,
@@ -7,5 +5,6 @@ export interface Cliente {
     dataNascimento: Date,
     idLogin: number
     email: string,
-    senha: string
+    senha: string,
+    idVenda: number
 }

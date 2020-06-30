@@ -42,8 +42,6 @@ export class ListarCarrinhoComponent implements OnInit {
       this.idLogin = variaveisGlobais.idlogin
       this.cliente = variaveisGlobais.cliente
     }
-
-    
   }
 
   getItensVenda(vendaId: number) {

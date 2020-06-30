@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
           this.httpReq = this.service.getClientePorIdLogin(response.id).pipe().subscribe(res => {
             variaveisGlobais.idlogin = response.id
             variaveisGlobais.cliente = res.body['data']
-            console.log(res.body['data'])
             this.router.navigate([''])
           }, err => {
             this.statusResponse = err.status

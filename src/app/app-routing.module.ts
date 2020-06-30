@@ -38,13 +38,16 @@ export const ROUTES: Routes = [
   {
     path: 'administrativo', children: [
       { path: '', component: HomeAdministrativoComponent },
-      
-      { path: 'categorias', children:[
-        { path: '', component: ListarCategoriasComponent},
-        { path: 'adicionar', component: AdicionarCategoriasComponent},
-        { path: 'visualizar/:id', component: VisualizarCategoriasComponent},
-        { path: 'editar/:id', component: EditarCategoriasComponent}
-        ]},
+
+      {
+        path: 'categorias', children: [
+          { path: '', component: ListarCategoriasComponent },
+          { path: 'adicionar', component: AdicionarCategoriasComponent },
+          { path: 'visualizar/:id', component: VisualizarCategoriasComponent },
+          { path: 'editar/:id', component: EditarCategoriasComponent }
+        ]
+      },
+
       {
         path: 'usuarios', children: [
           { path: '', component: ListarUsuariosComponent },
@@ -66,7 +69,6 @@ export const ROUTES: Routes = [
           { path: '', component: ListarVendasComponent },
         ]
       }
-
     ]
   }
 ];

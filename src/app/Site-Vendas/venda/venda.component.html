@@ -1,1 +1,37 @@
-<p>venda works!</p>
+<script src="js/bootstrap.js"></script>
+<div class="header">
+
+    <div class="container">
+
+        <div class="logo">
+            <h1><a [routerLink]="['/']">Vagnao Store<span>A Melhor Loja Virtual De Bilhar</span></a></h1>
+        </div>
+        <div class="head-t" *ngIf="idLogin == null">
+            <ul class="li">
+                <li><a routerLink="/login"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
+                <li><a routerLink="/login/registrar"><i class="fa fa-arrow-right"
+                            aria-hidden="true"></i>Cadastrar-se</a></li>
+            </ul>
+        </div>
+        <div class="head-t" *ngIf="idLogin != null">
+            <ul class="li">
+                <h4>Bem Vindo {{cliente.nome}}</h4>
+            </ul>
+        </div>
+    </div>
+    <style>
+        .clearfix {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</div>
+<br><br>
+<div class="marginTopBottomContentContainerAdmin">
+    <div class="alinharInicio">
+        <h5>Selecione o endereço para entrega</h5>
+    </div>
+    <div *ngFor="let endereco of enderecos">
+        <div> {{endereco.rua}} </div>
+    </div>
+</div>
