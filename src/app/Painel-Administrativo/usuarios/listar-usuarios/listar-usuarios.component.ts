@@ -6,6 +6,7 @@ import { Cliente } from 'src/app/commum/model/cliente.model';
 import { BsModalRef, ModalOptions, BsModalService } from 'ngx-bootstrap/modal';
 import { ModalDialogComponent } from 'src/app/commum/modals/modal-dialog/modal-dialog.component';
 import { ToastrService } from 'ngx-toastr';
+import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
 
 @Component({
   selector: 'app-listar-usuarios',
@@ -29,7 +30,11 @@ export class ListarUsuariosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllUsuarios()
+    if (variaveisGlobais.idAdm == null) {
+      this.router.navigate(['/login'])
+    } else {
+      this.getAllUsuarios()
+    }
   }
 
   getAllUsuarios() {
@@ -44,7 +49,7 @@ export class ListarUsuariosComponent implements OnInit {
     const initialState = { message: `Deseja excluir o login de ${nome} ?` }
     this.modalRef = this.modal.show(ModalDialogComponent, { initialState })
 
-    
+
     this.modalRef.content.action.subscribe((answer) => {
       this.service.deleteCliente(idUsuario).subscribe(response => {
         this.service.deleteLogin(idLogin).subscribe(response => {
@@ -59,7 +64,7 @@ export class ListarUsuariosComponent implements OnInit {
       })
     })
   }
-  
+
 
   showToastrSuccess() {
     this.toastr.success('Usuário foi excluido com sucesso', null, {

@@ -9,6 +9,7 @@ import { ClientesService } from 'src/app/commum/service/clientes.service';
 import { Cliente } from 'src/app/commum/model/cliente.model';
 import { Login } from 'src/app/commum/model/login.model';
 import { Usuario } from 'src/app/commum/model/usuario.model';
+import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -41,9 +42,13 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const email = this.activatedRoute.snapshot.params['email']
+    if (variaveisGlobais.idAdm == null) {
+      this.router.navigate(['/login'])
+    } else {
+      const email = this.activatedRoute.snapshot.params['email']
 
-    this.getUsuarioByEmail(email)
+      this.getUsuarioByEmail(email)
+    }
   }
 
   initForm() {
@@ -57,7 +62,7 @@ export class EditarUsuarioComponent implements OnInit {
       id: [''],
       nome: ['', [Validators.required]],
       cpf: ['', [Validators.required, this._validateBrService.cpf]],
-      dataNascimento:  [''],
+      dataNascimento: [''],
       idLogin: [0, [Validators.required]]
     })
   }
@@ -128,7 +133,7 @@ export class EditarUsuarioComponent implements OnInit {
       positionClass: 'toast-bottom-center'
     })
   }
-get email() { return this.loginForm.get('email') }
+  get email() { return this.loginForm.get('email') }
   get senha() { return this.loginForm.get('senha') }
   get nome() { return this.clienteForm.get('nome') }
   get cpf() { return this.clienteForm.get('cpf') }

@@ -108,10 +108,12 @@ export class VendaComponent implements OnInit {
     this.httpReq = this.vendaService.updateVenda(this.vendaId, this.vendaForm.value).subscribe(res =>{
       this.vendaForm.reset()
       this.showToastrSuccess()
-      this.router.navigate['/']
+      this.router.navigate([''])
+      variaveisGlobais.idVenda = null
+      variaveisGlobais.quantidade = 0
     }, err =>{
       this.vendaForm.reset()
-      this.router.navigate['/']
+      this.router.navigate([''])
       this.showToastrError()
     })
   }

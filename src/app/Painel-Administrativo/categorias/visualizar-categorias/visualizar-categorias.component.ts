@@ -6,6 +6,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
 import { Categorias } from 'src/app/commum/model/categorias.model';
 import { ModalDialogComponent } from 'src/app/commum/modals/modal-dialog/modal-dialog.component';
+import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
 
 @Component({
   selector: 'app-visualizar-categorias',
@@ -15,10 +16,10 @@ import { ModalDialogComponent } from 'src/app/commum/modals/modal-dialog/modal-d
 export class VisualizarCategoriasComponent implements OnInit {
   private httpReq: Subscription
 
-categorias: Categorias
-messageApi: string
-statusResponse: number
-modalRef: BsModalRef
+  categorias: Categorias
+  messageApi: string
+  statusResponse: number
+  modalRef: BsModalRef
 
   constructor(
     private service: CategoriasService,
@@ -29,46 +30,50 @@ modalRef: BsModalRef
   ) { }
 
   ngOnInit(): void {
-    const id = this._activatedRoute.snapshot.params['id']
+    if (variaveisGlobais.idAdm == null) {
+      this.router.navigate(['/login'])
+    } else {
+      const id = this._activatedRoute.snapshot.params['id']
 
-    this.getCategoria(id)
+      this.getCategoria(id)
+    }
   }
 
-  getCategoria(id: number){
-       this.httpReq = this.service.getCategoria(id).subscribe(response =>{
-       this.messageApi = response.body['message']
-       this.categorias = response.body['data'][0];
-       
-     }, err=>{
-       this.statusResponse =err.status
-       this.messageApi= err.error['message']
-   })
+  getCategoria(id: number) {
+    this.httpReq = this.service.getCategoria(id).subscribe(response => {
+      this.messageApi = response.body['message']
+      this.categorias = response.body['data'][0];
+
+    }, err => {
+      this.statusResponse = err.status
+      this.messageApi = err.error['message']
+    })
   }
 
-  canDelete(nome: string, id:number) {
+  canDelete(nome: string, id: number) {
     const initialState = { message: `Deseja excluir a categoria "${nome}" ?` }
     this.modalRef = this.modal.show(ModalDialogComponent, { initialState })
-    
-    
-    this.modalRef.content.action.subscribe((answer) => {
-      
-      if(answer ==true){
-      this.service.deleteCategorias(id).subscribe(response => {
 
-                this.modalRef.hide()
+
+    this.modalRef.content.action.subscribe((answer) => {
+
+      if (answer == true) {
+        this.service.deleteCategorias(id).subscribe(response => {
+
+          this.modalRef.hide()
           this.showToastrSuccess()
           this.router.navigate(['/administrativo/categorias'])
-  
-        }, err => { 
-          
+
+        }, err => {
+
           this.modalRef.hide()
           this.showToastrError()
           this.router.navigate(['/administrativo/categorias'])
         })
-      }else{
+      } else {
         this.modalRef.hide()
       }
-      })
+    })
   }
 
   showToastrSuccess() {
@@ -77,7 +82,7 @@ modalRef: BsModalRef
       positionClass: 'toast-bottom-center'
     })
   }
-  
+
   showToastrError() {
     this.toastr.error('Houve um erro ao excluir a categoria. Tente novamente.', null, {
       progressBar: true,

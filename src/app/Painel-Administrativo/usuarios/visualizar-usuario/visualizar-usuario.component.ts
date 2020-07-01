@@ -9,6 +9,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalDialogComponent } from 'src/app/commum/modals/modal-dialog/modal-dialog.component';
 import { LoginService } from 'src/app/commum/service/login.service';
 import { UsuariosService } from 'src/app/commum/service/usuarios.service';
+import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
 
 @Component({
   selector: 'app-visualizar-usuario',
@@ -31,21 +32,25 @@ export class VisualizarUsuarioComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private modal: BsModalService
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit(): void {
-    const email = this._activatedRoute.snapshot.params['email']
+    if (variaveisGlobais.idAdm == null) {
+      this.router.navigate(['/login'])
+    } else {
+      const email = this._activatedRoute.snapshot.params['email']
 
-    this.getUsuario(email)
+      this.getUsuario(email)
+    }
   }
 
-  getUsuario(email: string){
+  getUsuario(email: string) {
     this.httpReq = this.service.getCliente(email).subscribe(res => {
       this.statusResponse = res.body['message']
       this.usuario = res.body.data[0]
-    }, err =>{
+    }, err => {
       this.messageApi = err.error['message']
     })
   }
@@ -54,7 +59,7 @@ export class VisualizarUsuarioComponent implements OnInit {
     const initialState = { message: `Deseja excluir o login de ${nome} ?` }
     this.modalRef = this.modal.show(ModalDialogComponent, { initialState })
 
-    
+
     this.modalRef.content.action.subscribe((answer) => {
       this._service.deleteCliente(idUsuario).subscribe(response => {
         this._service.deleteLogin(idLogin).subscribe(response => {

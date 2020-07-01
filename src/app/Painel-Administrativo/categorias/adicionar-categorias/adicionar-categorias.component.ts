@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
 
 @Component({
   selector: 'app-adicionar-categorias',
@@ -15,9 +16,6 @@ export class AdicionarCategoriasComponent implements OnInit {
   private httpReq: Subscription
   public categoriasForm: FormGroup
 
-  
-
-
   constructor(
     private formBuilder: FormBuilder,
     private service: CategoriasService,
@@ -27,10 +25,14 @@ export class AdicionarCategoriasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.categoriasForm = this.formBuilder.group({
-      nome:  ['', [Validators.required,Validators.maxLength(250)]],
-      descricao: ['', [Validators.required,Validators.maxLength(300)]],
-    })
+    if(variaveisGlobais.idAdm == null){
+      this.router.navigate(['/login'])
+    }else{
+      this.categoriasForm = this.formBuilder.group({
+        nome:  ['', [Validators.required,Validators.maxLength(250)]],
+        descricao: ['', [Validators.required,Validators.maxLength(300)]],
+      })
+    }
   }
 
   onSubmit() {

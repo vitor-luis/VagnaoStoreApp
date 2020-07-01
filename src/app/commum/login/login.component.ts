@@ -44,7 +44,14 @@ export class LoginComponent implements OnInit {
       if (res.status == 200) {
         let response = this.decodificarToken(res.body['token'])
         if (response.isAdmin == 1) {
-          this.router.navigate(['administrativo'])
+          this.httpReq = this.service.getClientePorIdLogin(response.id).pipe().subscribe(res => {
+            variaveisGlobais.idAdm = response.id
+            variaveisGlobais.cliente = res.body['data']
+            this.router.navigate(['administrativo'])
+          }, err => {
+            this.statusResponse = err.status
+            this.messageApi = 'Falha na autenticação!'
+          })
         } else {
           this.httpReq = this.service.getClientePorIdLogin(response.id).pipe().subscribe(res => {
             variaveisGlobais.idlogin = response.id

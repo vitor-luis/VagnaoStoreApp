@@ -13,6 +13,9 @@ export class HomeAdministrativoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(variaveisGlobais.idAdm == null){
+      this.router.navigate(['/login'])
+    }
   }
 
 }
