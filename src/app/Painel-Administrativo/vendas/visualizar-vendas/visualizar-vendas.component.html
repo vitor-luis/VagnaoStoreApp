@@ -12,31 +12,65 @@
             <br>
             <div>
                 <div class="row">
-                    
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
+                        <label class="form-control-label">Nome</label>
+                        <div>
+                            {{venda.nome}}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
                         <label class="form-control-label">Data</label>
                         <div>
                             {{venda.data | date: 'dd/MM/yyyy'}}
                         </div>
                     </div>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <label class="form-control-label">Valor Total</label>
                         <div>
-                            {{venda.total | currency:"R$" }} 
+                            {{venda.total | currency:"R$" }}
                         </div>
                     </div>
-                    
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <label class="form-control-label">Efetuada</label>
                         <div>
                             <span>Sim</span>
                         </div>
                     </div>
+                </div>
+                <br>
+                <div class="row">
+                    <h4>Dados da entrega</h4>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class="form-control-label">Rua</label>
+                        <div>
+                            {{venda.rua}}
+                        </div>
                     </div>
-                    <br>
-                    
-                
+                    <div class="col-sm-3">
+                        <label class="form-control-label">Número</label>
+                        <div>
+                            {{venda.numero}}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="form-control-label">Bairro</label>
+                        <div>
+                            {{venda.bairro}}
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="form-control-label">Cidade</label>
+                        <div>
+                            {{venda.cidade}}-{{venda.estado}}
+                        </div>
+                    </div>
+
+                </div>
+                <br>
             </div>
         </div>
     </div>

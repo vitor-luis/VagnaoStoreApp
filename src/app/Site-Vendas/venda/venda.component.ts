@@ -46,12 +46,11 @@ export class VendaComponent implements OnInit {
       this.idLogin = variaveisGlobais.idlogin
       this.cliente = variaveisGlobais.cliente[0]
     }
-    this.getEnderecos()
     this.iniciaForm()
   }
 
   getEnderecos(){
-    this.httpReq = this.service.getEnderecoEntregaPorCliente(variaveisGlobais.cliente[0].id).pipe().subscribe(res =>{
+    this.httpReq = this.service.getEnderecoEntregaPorCliente(this.cliente.id).pipe().subscribe(res =>{
       if(res.body['data'].length > 0){
         this.enderecos = res.body['data']
       }else{
@@ -81,6 +80,8 @@ export class VendaComponent implements OnInit {
       efetuada: [1, [Validators.required]],
       idEnderecoVenda: ['', [Validators.required]]
     })
+
+    this.getEnderecos()
   }
 
   onSubmit(){
@@ -94,7 +95,7 @@ export class VendaComponent implements OnInit {
   }
 
   getDadosVenda(vendaId){
-    this.httpReq = this.vendaService.getVendaPorId(vendaId).pipe().subscribe(res =>{
+    this.httpReq = this.vendaService.getVenda(vendaId).pipe().subscribe(res =>{
       this.venda = res.body['date'][0]
     })
   }
@@ -106,12 +107,12 @@ export class VendaComponent implements OnInit {
     this.vendaForm.value.efetuada = 1
     this.httpReq = this.vendaService.updateVenda(this.vendaId, this.vendaForm.value).subscribe(res =>{
       this.vendaForm.reset()
+      this.showToastrSuccess()
       this.router.navigate['/']
-      this.showToastrSuccess
     }, err =>{
       this.vendaForm.reset()
       this.router.navigate['/']
-      this.showToastrError
+      this.showToastrError()
     })
   }
 
@@ -128,6 +129,4 @@ export class VendaComponent implements OnInit {
       positionClass: 'toast-bottom-center'
     })
   }
-  
-
 }

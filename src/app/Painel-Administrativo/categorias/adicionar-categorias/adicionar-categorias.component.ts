@@ -34,6 +34,7 @@ export class AdicionarCategoriasComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.categoriasForm.value)
     this.httpReq = this.service.postCategorias(this.categoriasForm.value).subscribe(res =>{
       this.categoriasForm.reset()
       this.router.navigate(['/administrativo/categorias'])

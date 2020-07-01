@@ -20,6 +20,10 @@ export class VendasService {
     return this.http.get<Vendas>(`${VagnaoAPI}/venda/${id}`, { observe: 'response' })
   }
 
+  getVendaComEnderecoEntrega(id:number): Observable<HttpResponse<Vendas>>{
+    return this.http.get<Vendas>(`${VagnaoAPI}/venda/visualizar/${id}`, { observe: 'response' })
+  }
+
   postVenda(form): Observable<HttpResponse<any>>{
     return this.http.post<Vendas>(`${VagnaoAPI}/venda/`, form, { observe: 'response' })
   }
@@ -29,8 +33,6 @@ export class VendasService {
   }
 
   updateVenda(id:number, form): Observable<HttpResponse<any>>{
-    console.log(id)
-    console.log(form)
     return this.http.put<Vendas>(`${VagnaoAPI}/venda/${id}`, form, { observe: 'response' })
   }
   
