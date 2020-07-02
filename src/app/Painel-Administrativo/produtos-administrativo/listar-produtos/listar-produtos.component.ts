@@ -10,6 +10,8 @@ import { CategoriasService } from 'src/app/commum/service/categorias.service';
 import { Categorias } from 'src/app/commum/model/categorias.model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
+import { ItemVendaService } from 'src/app/commum/service/item-venda.service';
+import { ItemVenda } from 'src/app/commum/model/itemVenda.model';
 
 @Component({
   selector: 'app-listar-produtos',
@@ -25,11 +27,13 @@ export class ListarProdutosComponent implements OnInit {
   statusResponse: number
   messageApi: string
   modalRef: BsModalRef
+  itemVenda: ItemVenda
 
   constructor(
     private service: ProdutoService,
     private serviceC: CategoriasService,
     private router: Router,
+    private itemVendaService: ItemVendaService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private modal: BsModalService
@@ -55,16 +59,28 @@ export class ListarProdutosComponent implements OnInit {
     this.modalRef = this.modal.show(ModalDialogComponent, { initialState })
 
     this.modalRef.content.action.subscribe((answer) => {
+
       if (answer == true) {
-        this.service.deleteProdutos(id).subscribe(response => {
-          this.modalRef.hide()
-          this.showToastrSuccess()
-          this.router.navigate(['/administrativo/produtos'])
-          this.getAllProdutos()
+        this.httpReq = this.itemVendaService.getVendasPorItemVenda(id).pipe().subscribe(res => {
+          if (res.body['data'].length > 0) {
+            this.modalRef.hide()
+            this.showToastrErrorExcluirProduto()
+            this.getAllProdutos()
+          }else{
+            this.service.deleteProdutos(id).subscribe(response => {
+              this.modalRef.hide()
+              this.showToastrSuccess()
+              this.getAllProdutos()
+            }, err => {
+              this.modalRef.hide()
+              this.showToastrError()
+              this.getAllProdutos()
+            })
+          }
         }, err => {
           this.modalRef.hide()
-          this.showToastrError()
-          this.router.navigate(['/administrativo/produtos'])
+              this.showToastrError()
+              this.router.navigate(['/administrativo/produtos'])
         })
       } else {
         this.modalRef.hide()
@@ -81,6 +97,13 @@ export class ListarProdutosComponent implements OnInit {
 
   showToastrError() {
     this.toastr.error('Houve um erro ao excluir o usuário. Tente novamente.', null, {
+      progressBar: true,
+      positionClass: 'toast-bottom-center'
+    })
+  }
+
+  showToastrErrorExcluirProduto() {
+    this.toastr.error('Houve um erro ao excluir o produto. Ele está ligado a uma venda.', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
     })

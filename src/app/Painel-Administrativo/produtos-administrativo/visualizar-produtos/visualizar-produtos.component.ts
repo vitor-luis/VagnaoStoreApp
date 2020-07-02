@@ -9,6 +9,8 @@ import { ProdutoService } from './../../../commum/service/produto.service';
 import { CategoriasService } from 'src/app/commum/service/categorias.service';
 import { Categorias } from 'src/app/commum/model/categorias.model';
 import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
+import { ItemVenda } from 'src/app/commum/model/itemVenda.model';
+import { ItemVendaService } from 'src/app/commum/service/item-venda.service';
 
 @Component({
   selector: 'app-visualizar-produtos',
@@ -24,10 +26,12 @@ export class VisualizarProdutosComponent implements OnInit {
   messageApi: string
   statusResponse: number
   modalRef: BsModalRef
+  itemVenda: ItemVenda
 
   constructor(
     private service: ProdutoService,
     private serviceC: CategoriasService,
+    private itemVendaService: ItemVendaService,
     private _activatedRoute: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,
@@ -77,18 +81,28 @@ export class VisualizarProdutosComponent implements OnInit {
     this.modalRef.content.action.subscribe((answer) => {
 
       if (answer == true) {
-        this.service.deleteProdutos(id).subscribe(response => {
-
-          this.modalRef.hide()
-          this.showToastrSuccess()
-          this.router.navigate(['/administrativo/produtos'])
-
+        this.httpReq = this.itemVendaService.getVendasPorItemVenda(id).pipe().subscribe(res => {
+          if (res.body['data'].length > 0) {
+            this.modalRef.hide()
+            this.showToastrErrorExcluirProduto()
+            this.router.navigate(['/administrativo/produtos'])
+          } else {
+            this.service.deleteProdutos(id).subscribe(response => {
+              this.modalRef.hide()
+              this.showToastrSuccess()
+              this.router.navigate(['/administrativo/produtos'])
+            }, err => {
+              this.modalRef.hide()
+              this.showToastrError()
+              this.router.navigate(['/administrativo/produtos'])
+            })
+          }
         }, err => {
-
           this.modalRef.hide()
           this.showToastrError()
           this.router.navigate(['/administrativo/produtos'])
         })
+
       } else {
         this.modalRef.hide()
       }
@@ -96,14 +110,21 @@ export class VisualizarProdutosComponent implements OnInit {
   }
 
   showToastrSuccess() {
-    this.toastr.success('Usuário foi excluido com sucesso', null, {
+    this.toastr.success('Produto foi excluido com sucesso', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
     })
   }
 
   showToastrError() {
-    this.toastr.error('Houve um erro ao excluir o usuário. Tente novamente.', null, {
+    this.toastr.error('Houve um erro ao excluir o produto. Tente novamente.', null, {
+      progressBar: true,
+      positionClass: 'toast-bottom-center'
+    })
+  }
+
+  showToastrErrorExcluirProduto() {
+    this.toastr.error('Houve um erro ao excluir o produto. Ele está ligado a uma venda.', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
     })

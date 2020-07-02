@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { Categorias } from 'src/app/commum/model/categorias.model';
 import { ModalDialogComponent } from 'src/app/commum/modals/modal-dialog/modal-dialog.component';
 import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
+import { ProdutoService } from 'src/app/commum/service/produto.service';
 
 @Component({
   selector: 'app-visualizar-categorias',
@@ -25,6 +26,7 @@ export class VisualizarCategoriasComponent implements OnInit {
     private service: CategoriasService,
     private _activatedRoute: ActivatedRoute,
     private router: Router,
+    private produtoService: ProdutoService,
     private toastr: ToastrService,
     private modal: BsModalService
   ) { }
@@ -56,19 +58,28 @@ export class VisualizarCategoriasComponent implements OnInit {
 
 
     this.modalRef.content.action.subscribe((answer) => {
-
       if (answer == true) {
-        this.service.deleteCategorias(id).subscribe(response => {
+        this.httpReq = this.produtoService.getProdutosPorCategoria(id).pipe().subscribe(res => {
+          if (res.body['data'].length > 0) {
+            this.modalRef.hide()
+            this.showToastrErrorDeleteProduto()
+            this.router.navigate(['/administrativo/categorias'])
+          } else {
 
-          this.modalRef.hide()
-          this.showToastrSuccess()
-          this.router.navigate(['/administrativo/categorias'])
+            this.service.deleteCategorias(id).subscribe(response => {
 
-        }, err => {
+              this.modalRef.hide()
+              this.showToastrSuccess()
+              this.router.navigate(['/administrativo/categorias'])
 
-          this.modalRef.hide()
-          this.showToastrError()
-          this.router.navigate(['/administrativo/categorias'])
+            }, err => {
+
+              this.modalRef.hide()
+              this.showToastrError()
+              this.router.navigate(['/administrativo/categorias'])
+            })
+
+          }
         })
       } else {
         this.modalRef.hide()
@@ -85,6 +96,13 @@ export class VisualizarCategoriasComponent implements OnInit {
 
   showToastrError() {
     this.toastr.error('Houve um erro ao excluir a categoria. Tente novamente.', null, {
+      progressBar: true,
+      positionClass: 'toast-bottom-center'
+    })
+  }
+
+  showToastrErrorDeleteProduto() {
+    this.toastr.error('Não foi possível excluir a categoria há algum produto relacionado a ela. Tente novamente.', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
     })

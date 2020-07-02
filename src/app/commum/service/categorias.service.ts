@@ -14,8 +14,11 @@ export class CategoriasService {
 
   params = new HttpParams()
 
-  getAllCategorias(): Observable<HttpResponse<Categorias[]>> {
+  getAllCategoriasMenu(): Observable<HttpResponse<Categorias[]>> {
     return this.http.get<Categorias[]>(`${VagnaoAPI}/categorias/`, { observe: 'response' })
+  }
+  getAllCategorias(): Observable<HttpResponse<Categorias[]>> {
+    return this.http.get<Categorias[]>(`${VagnaoAPI}/categorias/todas/`, { observe: 'response' })
   }
 
   getCategoria(id:number): Observable<HttpResponse<Categorias>>{

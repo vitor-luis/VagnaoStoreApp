@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { VagnaoAPI } from 'src/app.api';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +28,7 @@ export class ProdutoService {
   }
   
   updateProdutos(data:Produto, id ): Observable<HttpResponse<any>> {
-    return this.http.put<any>(`${VagnaoAPI}/produtos/${id}`,data, { observe: 'response' })
+    return this.http.put<any>(`${VagnaoAPI}/produtos/${id}`, data, { observe: 'response' })
   }
 
   deleteProdutos(id):Observable<HttpResponse<any>> {
@@ -37,10 +38,6 @@ export class ProdutoService {
   getProdutosPorCategoria(id: number): Observable<HttpResponse<Produto>>{
     return this.http.get<Produto>(`${VagnaoAPI}/produtos/categoria/${id}`, { observe: 'response' })
   }
-  
-
-  
-  
 }
 
 

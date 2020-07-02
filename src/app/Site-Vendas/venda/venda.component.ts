@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { VendasService } from 'src/app/commum/service/vendas.service';
 import { Vendas } from 'src/app/commum/model/vendas.model';
 import { ToastrService } from 'ngx-toastr';
+import { ValidateBrService } from 'angular-validate-br';
 
 @Component({
   selector: 'app-venda',
@@ -34,7 +35,8 @@ export class VendaComponent implements OnInit {
     private service: EnderecoEntregaService,
     private vendaService: VendasService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private _validateBrService: ValidateBrService
   ) { }
 
   ngOnInit(): void {
@@ -63,12 +65,12 @@ export class VendaComponent implements OnInit {
 
   iniciaForm(){
     this.enderecoForm = this.formBuilder.group({
-      rua: ['', [Validators.required, Validators.maxLength(400)]],
+      rua: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(400)]],
       numero: ['', [Validators.required, Validators.maxLength(5)]],
       bairro: ['', [Validators.required, Validators.maxLength(400)]],
-      cidade: ['', [Validators.required, Validators.maxLength(2)]],
-      estado: ['', [Validators.required, Validators.maxLength(50)]],
-      cep: ['', [Validators.required]],
+      cidade: ['', [Validators.required, Validators.maxLength(50)]],
+      estado: ['', [Validators.required, Validators.maxLength(2)]],
+      cep: ['', [Validators.required, Validators.maxLength(50)]],
       complemento: ['', [Validators.maxLength(1000)]],
       idCliente: [0, [Validators.required]]
     }),
@@ -118,6 +120,10 @@ export class VendaComponent implements OnInit {
     })
   }
 
+  addEndereco(){
+    this.enderecos = null
+  }
+
   showToastrSuccess() {
     this.toastr.success('Compra efetuada com sucesso', null, {
       progressBar: true,
@@ -131,4 +137,13 @@ export class VendaComponent implements OnInit {
       positionClass: 'toast-bottom-center'
     })
   }
+
+  get rua() { return this.enderecoForm.get('rua') }
+  get numero() { return this.enderecoForm.get('numero') }
+  get bairro() { return this.enderecoForm.get('bairro') }
+  get cidade() { return this.enderecoForm.get('cidade') }
+  get estado() { return this.enderecoForm.get('estado') }
+  get cep() { return this.enderecoForm.get('cep') }
+  get complemento() { return this.enderecoForm.get('complemento') }
+  get idCliente() { return this.enderecoForm.get('idCliente') }
 }

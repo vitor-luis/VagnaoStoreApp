@@ -82,7 +82,6 @@ export class EditarProdutosComponent implements OnInit {
 
   populateForm() {
     this.produtoForm.patchValue({
-      id: this.produto.id,
       nome: this.produto.nome,
       descricao: this.produto.descricao,
       preco: this.produto.preco,
@@ -93,7 +92,7 @@ export class EditarProdutosComponent implements OnInit {
   }
 
   onSubmit() {
-    this.httpReq = this.service.updateProdutos(this.produtoForm.value, this.produtoForm.value.id).subscribe(res => {
+    this.httpReq = this.service.updateProdutos(this.produtoForm.value, this.produto.id).subscribe(res => {
       this.produtoForm.reset()
       this.router.navigate(['/administrativo/produtos'])
       this.showToastrSuccess()

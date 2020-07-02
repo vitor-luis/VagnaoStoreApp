@@ -29,8 +29,13 @@
 <br><br>
 <div>
     <div class="marginTopBottomContentContainerAdmin" *ngIf="enderecos != null">
-        <div class="alinharInicio">
-            <h5>Selecione o endereço para entrega</h5>
+        <div class="alinharInicio row">
+            <div class="col-sm-10">
+                <h5>Selecione o endereço para entrega</h5>
+            </div>
+            <div class="form-group positionButtons">
+                <button (click)="addEndereco()" class="btn btn-success">Adicionar novo Endereço</button>
+            </div>
         </div>
         <br>
         <form id="endereco-form" class="form" [formGroup]="vendaForm" novalidate>
@@ -43,7 +48,8 @@
                 <div class="col-sm-2"> CEP </div>
             </div>
             <div *ngFor="let endereco of enderecos" class="row">
-                <div class="col-sm-1"><input  type="radio" name="idEnderecoVenda" value="{{endereco.id}}" formControlName="idEnderecoVenda" ></div>
+                <div class="col-sm-1"><input type="radio" name="idEnderecoVenda" value="{{endereco.id}}"
+                        formControlName="idEnderecoVenda"></div>
                 <div class="col-sm-2"> {{endereco.rua}} </div>
                 <div class="col-sm-2"> {{endereco.numero}} </div>
                 <div class="col-sm-2"> {{endereco.bairro}} </div>
@@ -52,7 +58,7 @@
             </div>
             <br><br>
             <div class="form-group positionButtons">
-                <h4>Valor total da compra R$ {{venda.total}}</h4> 
+                <h4>Valor total da compra R$ {{venda.total}}</h4>
             </div>
             <div class="form-group positionButtons">
                 <button (click)="efetuarVenda()" class="btn btn-success">Efetuar a compra</button>
@@ -70,43 +76,81 @@
                     <div class="form-group col-sm-3">
                         <label for="rua" class="text-center">Rua</label><br>
                         <input type="rua" name="usuario" id="rua" class="form-control" placeholder="Rua"
-                            formControlName="rua" maxlength="400">
+                            formControlName="rua">
+                        <div *ngIf="!rua.pristine && rua.errors">
+                            <span *ngIf="rua.errors.required" style="color:red">Rua é obrigatória.</span>
+                            <span *ngIf="rua.errors.minlength" style="color:red">Rua deve ter no mínimo 4
+                                caracters.</span>
+                            <span *ngIf="rua.errors.maxlength" style="color:red">Rua deve ter no máximo 400
+                                caracters.</span>
+                        </div>
                     </div>
                     <div class="form-group col-sm-1">
                         <label for="numero" class="text-center">Número</label><br>
                         <input type="numero" name="usuario" id="numero" class="form-control" placeholder="Número"
-                            formControlName="numero" maxlength="5">
+                            formControlName="numero">
+                        <div *ngIf="!numero.pristine && numero.errors">
+                            <span *ngIf="numero.errors.required" style="color:red">Número é obrigatório.</span>
+                            <span *ngIf="numero.errors.maxlength" style="color:red">Número inválido.</span>
+                        </div>
                     </div>
                     <div class="form-group col-sm-3">
                         <label for="bairro" class="text-center">Bairro</label><br>
                         <input type="bairro" name="usuario" id="bairro" class="form-control" placeholder="Bairro"
-                            formControlName="bairro" maxlength="400">
+                            formControlName="bairro">
+                        <div *ngIf="!bairro.pristine && bairro.errors">
+                            <span *ngIf="bairro.errors.required" style="color:red">Bairro é obrigatória.</span>
+                            <span *ngIf="bairro.errors.minlength" style="color:red">Bairro deve ter no mínimo 4
+                                caracters.</span>
+                            <span *ngIf="bairro.errors.maxlength" style="color:red">Bairro deve ter no máximo 400
+                                caracters.</span>
+                        </div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="complemento" class="text-center">Complemento</label><br>
                         <input type="complemento" name="usuario" id="complemento" class="form-control"
                             placeholder="Complemento" formControlName="complemento" maxlength="1000">
+                            <div *ngIf="!complemento.pristine && complemento.errors">
+                                <span *ngIf="complemento.errors.maxlength" style="color:red">Complemento deve ter no máximo 1000
+                                    caracters.</span>
+                            </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-3">
                         <label for="cidade" class="text-center">Cidade</label><br>
                         <input type="cidade" name="usuario" id="cidade" class="form-control" placeholder="Cidade"
-                            formControlName="cidade" maxlength="50">
+                            formControlName="cidade">
+                            <div *ngIf="!cidade.pristine && cidade.errors">
+                                <span *ngIf="cidade.errors.required" style="color:red">Cidade é obrigatória.</span>
+                                <span *ngIf="cidade.errors.maxlength" style="color:red">Cidade deve ter no máximo 50
+                                    caracters.</span>
+                            </div>
                     </div>
                     <div class="form-group col-sm-1">
                         <label for="estado" class="text-center">Estado</label><br>
                         <input type="estado" name="usuario" id="estado" class="form-control" placeholder="Estado"
-                            formControlName="estado" maxlength="2">
+                            formControlName="estado">
+                            <div *ngIf="!estado.pristine && estado.errors">
+                                <span *ngIf="estado.errors.required" style="color:red">Estado é obrigatório.</span>
+                                <span *ngIf="estado.errors.maxlength" style="color:red">Estado deve ter no máximo 2
+                                    caracters.</span>
+                            </div>
                     </div>
                     <div class="form-group col-sm-3">
                         <label for="cep" class="text-center">CEP</label><br>
                         <input type="cep" name="usuario" id="cep" class="form-control" placeholder="CEP"
                             formControlName="cep">
+                            <div *ngIf="!cep.pristine && cep.errors">
+                                <span *ngIf="cep.errors.required" style="color:red">CEP é obrigatória.</span>
+                                <span *ngIf="cep.errors.maxlength" style="color:red">CEP deve ter no máximo 8
+                                    caracters.</span>
+                            </div>
                     </div>
                 </div>
                 <div class="form-group positionButtons">
-                    <button (click)="onSubmit()" class="btn btn-success">Salvar</button>
+                    <button (click)="onSubmit()" class="btn btn-success"
+                        [disabled]='!enderecoForm.valid'>Salvar</button>
                 </div>
             </form>
         </div>

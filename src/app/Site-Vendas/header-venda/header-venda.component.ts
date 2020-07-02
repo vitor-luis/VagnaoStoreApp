@@ -65,7 +65,7 @@ export class HeaderVendaComponent implements OnInit {
   }
 
   getCategoriasParaMenu() {
-    this.httpReq = this.service.getAllCategorias().subscribe(response => {
+    this.httpReq = this.service.getAllCategoriasMenu().subscribe(response => {
       this.statusResponse = response.status
       this.messageApi = response.body['message']
       this.categorias = response.body['data']

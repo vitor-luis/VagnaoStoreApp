@@ -7,6 +7,7 @@ import { ModalDialogComponent } from 'src/app/commum/modals/modal-dialog/modal-d
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
+import { ProdutoService } from 'src/app/commum/service/produto.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ListarCategoriasComponent implements OnInit {
 
   constructor(
     private service: CategoriasService,
+    private produtoService: ProdutoService,
     private router: Router,
     private toastr: ToastrService,
     private modal: BsModalService
@@ -38,8 +40,6 @@ export class ListarCategoriasComponent implements OnInit {
     }
   }
 
-
-
   getAllCategorias() {
     this.httpReq = this.service.getAllCategorias().subscribe(response => {
       this.statusResponse = response.status
@@ -48,18 +48,30 @@ export class ListarCategoriasComponent implements OnInit {
     })
   }
 
-
   canDelete(nome: string, id: number) {
     const initialState = { message: `Deseja excluir a categoria "${nome}" ?` }
     this.modalRef = this.modal.show(ModalDialogComponent, { initialState })
 
     this.modalRef.content.action.subscribe((answer) => {
       if (answer == true) {
-        this.service.deleteCategorias(id).subscribe(response => {
-          this.modalRef.hide()
-          this.showToastrSuccess()
-          this.router.navigate(['/administrativo/categorias'])
-          this.getAllCategorias()
+        this.httpReq = this.produtoService.getProdutosPorCategoria(id).pipe().subscribe(res => {
+          if (res.body['data'].length > 0) {
+            this.modalRef.hide()
+            this.showToastrErrorDeleteProduto()
+            this.getAllCategorias()
+          } else {
+
+            this.service.deleteCategorias(id).subscribe(response => {
+              this.modalRef.hide()
+              this.showToastrSuccess()
+              this.getAllCategorias()
+              this.getAllCategorias()
+            }, err => {
+              this.modalRef.hide()
+              this.showToastrError()
+              this.getAllCategorias()
+            })
+          }
         }, err => {
           this.modalRef.hide()
           this.showToastrError()
@@ -81,6 +93,13 @@ export class ListarCategoriasComponent implements OnInit {
 
   showToastrError() {
     this.toastr.error('Houve um erro ao excluir a categoria. Tente novamente.', null, {
+      progressBar: true,
+      positionClass: 'toast-bottom-center'
+    })
+  }
+
+  showToastrErrorDeleteProduto() {
+    this.toastr.error('Não foi possível excluir a categoria há algum produto relacionado a ela. Tente novamente.', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
     })

@@ -3400,3 +3400,6 @@ input.my-product-quantity {
 .alinharInicio{
     text-align: start;
 }
+.imagem{
+    height: 10% !important;
+}
