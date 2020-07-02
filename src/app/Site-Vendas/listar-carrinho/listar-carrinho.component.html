@@ -76,10 +76,10 @@
         </h5>
     </div>
     <div class="positionButtons compra" *ngIf="idLogin == null">
-        <button type="button" class="btn btn-outline-success btn-sm botao" [routerLink]="['/login']">Efetuar Compra</button>
+        <button type="button" class="btn btn-outline-success btn-sm botao" [routerLink]="['/login']">Confirmar carrinho</button>
     </div>
     <div class="positionButtons compra" *ngIf="idLogin != null">
-        <button type="button" class="btn btn-outline-success btn-sm botao" [routerLink]="['/venda', vendaId]">Efetuar Compra</button>
+        <button type="button" class="btn btn-outline-success btn-sm botao" [routerLink]="['/venda', vendaId]">Confirmar carrinho</button>
     </div>
 </div>
 
