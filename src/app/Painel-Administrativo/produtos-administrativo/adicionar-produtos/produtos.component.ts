@@ -11,7 +11,6 @@ import { Categorias } from 'src/app/commum/model/categorias.model';
 import { ValidateBrService } from 'angular-validate-br';
 import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
 
-
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.component.html',
@@ -19,16 +18,14 @@ import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
 })
 export class ProdutosComponent implements OnInit {
 
-
   private httpReq: Subscription
   public produtoForm: FormGroup
 
-
-  produto: Produto = null
-  categorias: Categorias[] = null
-  statusResponse: number
-  messageApi: string
-  mask: string
+  produto: Produto = null;
+  categorias: Categorias[] = null;
+  statusResponse: number;
+  messageApi: string;
+  mask: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,55 +38,57 @@ export class ProdutosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (variaveisGlobais.idAdm == null) {
-      this.router.navigate(['/login'])
+    if (isNull(variaveisGlobais.idAdm)) {
+      this.router.navigate(['/login']);
     } else {
-      this.getAllCategorias()
-
-
-      this.produtoForm = this.formBuilder.group({
+      this.getAllCategorias();
+      this.generateForm();      
+    }
+  }
+  
+  generateForm(): void {
+    this.produtoForm = this.formBuilder.group({
         nome: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
         descricao: ['', [Validators.required, Validators.maxLength(250)]],
         preco: ['', [Validators.required]],
         quantidadeEstoque: ['', [Validators.required, Validators.maxLength(11)]],
         urlImagem: ['', [Validators.required, Validators.maxLength(1000)]],
         idCategoria: ['', [Validators.required]]
-      })
-    }
+    })
   }
 
-  getAllCategorias() {
+  getAllCategorias(): void {
     this.httpReq = this.serviceC.getAllCategorias().subscribe(response => {
-      this.statusResponse = response.status
-      this.messageApi = response.body['message']
-      this.categorias = response.body['data']
+      this.statusResponse = response.status;
+      this.messageApi = response.body['message'];
+      this.categorias = response.body['data'];
     })
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.httpReq = this.service.postProdutos(this.produtoForm.value).subscribe(res => {
-      this.produtoForm.reset()
-      this.router.navigate(['/administrativo/produtos'])
-      this.showToastrSuccess()
+      this.produtoForm.reset();
+      this.router.navigate(['/administrativo/produtos']);
+      this.showToastrSuccess();
     }, err => {
-      this.produtoForm.reset()
-      this.router.navigate(['/administrativo/produtos'])
-      this.showToastrError()
+      this.produtoForm.reset();
+      this.router.navigate(['/administrativo/produtos']);
+      this.showToastrError();
     })
   }
 
-  showToastrSuccess() {
+  showToastrSuccess(): void {
     this._toastr.success('Cadastro de produtos realizado com sucesso', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
-    })
+    });
   }
 
-  showToastrError() {
+  showToastrError(): void {
     this._toastr.error('Houve um erro ao efetuar o cadastro de produtos. Tente novamente.', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
-    })
+    });
   }
 
   get nome() { return this.produtoForm.get('nome') }
