@@ -18,13 +18,13 @@ import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
 export class AdicionarUsuariosComponent implements OnInit {
 
 
-  private httpReq: Subscription
-  public loginForm: FormGroup
-  public clienteForm: FormGroup
+  private httpReq: Subscription;
+  loginForm: FormGroup;
+  clienteForm: FormGroup;
 
-  login: Login = null
-  statusResponse: number
-  messageApi: string
+  login: Login = null;
+  statusResponse: number;
+  messageApi: string;
   mask: string;
 
   constructor(
@@ -39,10 +39,14 @@ export class AdicionarUsuariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (variaveisGlobais.idAdm == null) {
+    if (variaveisGlobais.idAdm == null) 
       this.router.navigate(['/login'])
-    } else {
-      this.clienteForm = this.formBuilder.group({
+    else 
+      this.generateForm();
+  }
+  
+  generateForm(): void {
+    this.clienteForm = this.formBuilder.group({
         nome: ['', [Validators.required, Validators.maxLength(250)]],
         cpf: ['', [Validators.required, this._validateBrService.cpf]],
         dataNascimento: [''],
@@ -53,53 +57,50 @@ export class AdicionarUsuariosComponent implements OnInit {
           senha: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
           isAdmin: [1, [Validators.required]],
         })
-    }
   }
 
-  onSubmit() {
-
-
+  onSubmit(): void {
     this.httpReq = this.service.postLogin(this.loginForm.value).subscribe(res => {
-      this.loginForm.reset()
-      this.clienteForm.value.idLogin = res.body['data']
-      this.postCliente()
+      this.loginForm.reset();
+      this.clienteForm.value.idLogin = res.body['data'];
+      this.postCliente();
     }, err => {
-      this.loginForm.reset()
-      this.router.navigate(['/administrativo/usuarios'])
-      this.showToastrError()
+      this.loginForm.reset();
+      this.router.navigate(['/administrativo/usuarios']);
+      this.showToastrError();
     })
   }
 
-  postCliente() {
+  postCliente(): void {
     this.httpReq = this.serviceCliente.postCliente(this.clienteForm.value).subscribe(res => {
-      this.clienteForm.reset()
-      this.router.navigate(['/administrativo/usuarios'])
-      this.showToastrSuccess()
+      this.clienteForm.reset();
+      this.router.navigate(['/administrativo/usuarios']);
+      this.showToastrSuccess();
     }, err => {
-      this.loginForm.reset()
-      this.router.navigate(['/administrativo/usuarios'])
-      this.showToastrErrorCliente()
+      this.loginForm.reset();
+      this.router.navigate(['/administrativo/usuarios']);
+      this.showToastrErrorCliente();
     })
   }
 
-  showToastrSuccess() {
+  showToastrSuccess(): void {
     this._toastr.success('Cadastro realizado com sucesso', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
-    })
+    });
   }
 
-  showToastrError() {
+  showToastrError(): void {
     this._toastr.error('Houve um erro ao efetuar o cadastro. Tente novamente.', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
-    })
+    });
   }
-  showToastrErrorCliente() {
+  showToastrErrorCliente(): void {
     this._toastr.error('Houve um erro ao efetuar o cadastro do cliente. Tente novamente.', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
-    })
+    });
   }
 
   get email() { return this.loginForm.get('email') }
