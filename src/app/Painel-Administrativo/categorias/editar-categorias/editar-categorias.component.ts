@@ -14,12 +14,12 @@ import { variaveisGlobais } from 'src/app/commum/variaveis-globais';
 })
 export class EditarCategoriasComponent implements OnInit {
 
-  private httpReq: Subscription
-  public categoriasForm: FormGroup
+  private httpReq: Subscription;
+  public categoriasForm: FormGroup;
 
-  categorias: Categorias = null
-  statusResponse: number
-  messageApi: string
+  categorias: Categorias = null;
+  statusResponse: number;
+  messageApi: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,74 +28,71 @@ export class EditarCategoriasComponent implements OnInit {
     private router: Router,
     private _toastr: ToastrService,
     private route: ActivatedRoute,
-  ) {
-    this.initForm()
-  }
+  ) {  }
 
   ngOnInit(): void {
-    if (variaveisGlobais.idAdm == null) {
-      this.router.navigate(['/login'])
-    } else {
-      const id = this.activatedRoute.snapshot.params['id']
+    this.initForm();
+    
+    if (variaveisGlobais.idAdm == null) 
+      this.router.navigate(['/login']);
+    else {
+      const id = this.activatedRoute.snapshot.params['id'];
 
-      this.getCategorias(id)
+      this.getCategorias(id);
     }
   }
 
-  initForm() {
+  initForm(): void {
     this.categoriasForm = this.formBuilder.group({
       id: [''],
       nome: ['', [Validators.required]],
       descricao: ['', [Validators.required]],
-
-    })
+    });
   }
 
-  getCategorias(id: number) {
+  getCategorias(id: number): void {
     this.httpReq = this.service.getCategoria(id).subscribe(response => {
-      this.messageApi = response.body['message']
-      this.categorias = response.body.data[0]
-      console.log(this.categorias)
-      this.populateForm()
+      this.messageApi = response.body['message'];
+      this.categorias = response.body.data[0];
+      this.populateForm();
     }, err => {
-      this.statusResponse = err.status
-      this.messageApi = err.error['message']
-    })
+      this.statusResponse = err.status;
+      this.messageApi = err.error['message'];
+    });
   }
 
-  populateForm() {
+  populateForm(): void {
     this.categoriasForm.patchValue({
       id: this.categorias.id,
       nome: this.categorias.nome,
       descricao: this.categorias.descricao,
-    })
+    });
   }
 
-  onSubmit() {
-
+  onSubmit(): void {
     this.httpReq = this.service.updateCategorias(this.categoriasForm.value, this.categoriasForm.value.id).subscribe(res => {
-      this.categoriasForm.reset()
-      this.router.navigate(['/administrativo/categorias'])
-      this.showToastrSuccess()
+      this.categoriasForm.reset();
+      this.router.navigate(['/administrativo/categorias']);
+      this.showToastrSuccess();
     }, err => {
-      this.categoriasForm.reset()
-      this.router.navigate(['/administrativo/categorias'])
-      this.showToastrError()
-    })
+      this.categoriasForm.reset();
+      this.router.navigate(['/administrativo/categorias']);
+      this.showToastrError();
+    });
   }
 
-  showToastrSuccess() {
+  showToastrSuccess(): void {
     this._toastr.success('Edição realizado com sucesso', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
-    })
+    });
   }
 
-  showToastrError() {
+  showToastrError(): void {
     this._toastr.error('Houve um erro na edição da categoria. Tente novamente.', null, {
       progressBar: true,
       positionClass: 'toast-bottom-center'
-    })
+    });
   }
 
 
